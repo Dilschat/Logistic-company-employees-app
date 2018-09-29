@@ -1,5 +1,7 @@
-package com.company.Employee.app;
+package com.company.Employee.app.config;
 
+import com.company.Employee.app.service.LoginningDataClusterClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +15,11 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    private LoginningDataClusterClient loginnigClient;
+    @Autowired
+    WebSecurityConfig(LoginningDataClusterClient loginningDataClusterClient){
+        loginnigClient = loginningDataClusterClient;
+    }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -31,6 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
+
         UserDetails user =
                 User.withDefaultPasswordEncoder()
                         .username("user")
@@ -39,5 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .build();
 
         return new InMemoryUserDetailsManager(user);
+
     }
+
 }
