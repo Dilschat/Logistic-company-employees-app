@@ -1,5 +1,6 @@
 package com.company.Employee.app.service;
 
+import com.company.Employee.app.model.Response;
 import org.springframework.context.annotation.Bean;
 
 public interface LoginningDataClusterClient {
@@ -7,5 +8,7 @@ public interface LoginningDataClusterClient {
      *
      * @return string that contains access token
      */
-    String login(String login, String password);
+    Response login(String login, String password);
+    Response login(String login);
+
 }

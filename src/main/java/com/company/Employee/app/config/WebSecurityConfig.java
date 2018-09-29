@@ -1,5 +1,6 @@
 package com.company.Employee.app.config;
 
+import com.company.Employee.app.service.DataClusterUserDetailsService;
 import com.company.Employee.app.service.LoginningDataClusterClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,14 +16,15 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private LoginningDataClusterClient loginnigClient;
+    private DataClusterUserDetailsService userDetailsService;
     @Autowired
-    WebSecurityConfig(LoginningDataClusterClient loginningDataClusterClient){
-        loginnigClient = loginningDataClusterClient;
+    WebSecurityConfig(DataClusterUserDetailsService dataClusterUserDetailsService){
+        userDetailsService = dataClusterUserDetailsService;
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .userDetailsService(userDetailsService)
                 .authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
                 .anyRequest().authenticated()
@@ -35,19 +37,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
-    @Bean
-    @Override
-    public UserDetailsService userDetailsService() {
 
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("password")
-                        .roles("USER")
-                        .build();
-
-        return new InMemoryUserDetailsManager(user);
-
-    }
 
 }
