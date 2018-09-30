@@ -1,6 +1,6 @@
 package com.company.Employee.app.service;
 
-import com.company.Employee.app.model.Response;
+import com.company.Employee.app.model.LoginResponse;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,9 +11,9 @@ public class EmployeeDetailsService implements UserDetails {
     private String userName;
     private String password;
 
-    EmployeeDetailsService(Response response){
-        userName = response.getUsername();
-        password = response.getPassword();
+    EmployeeDetailsService(LoginResponse loginResponse){
+        userName = loginResponse.getUsername();
+        password = loginResponse.getPassword();
     }
 
     @Override

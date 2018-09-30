@@ -1,6 +1,6 @@
 package com.company.Employee.app.service;
 
-import com.company.Employee.app.model.Response;
+import com.company.Employee.app.model.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,7 +15,7 @@ public class DataClusterUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        Response userDataResponse = loginnigRestClient.login(login);
-        return new EmployeeDetailsService(userDataResponse);
+        LoginResponse userDataLoginResponse = loginnigRestClient.login(login);
+        return new EmployeeDetailsService(userDataLoginResponse);
     }
 }

@@ -1,14 +1,13 @@
 package com.company.Employee.app.service;
 
-import com.company.Employee.app.model.Response;
-import org.springframework.context.annotation.Bean;
+import com.company.Employee.app.model.LoginResponse;
 
 public interface LoginningDataClusterClient {
     /**
      *
      * @return string that contains access token
      */
-    Response login(String login, String password);
-    Response login(String login);
+    LoginResponse login(String login, String password);
+    LoginResponse login(String login);
 
 }

@@ -1,12 +1,12 @@
 package com.company.Employee.app.model;
 
-public class Response {
+public class LoginResponse {
     private String username;
     private String password;
     private String role;
     private String token;
 
-    public Response(String username, String password, String role, String token) {
+    public LoginResponse(String username, String password, String role, String token) {
         this.username = username;
         this.password = password;
         this.role = role;

@@ -16,25 +16,17 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private DataClusterUserDetailsService userDetailsService;
-    @Autowired
-    WebSecurityConfig(DataClusterUserDetailsService dataClusterUserDetailsService){
-        userDetailsService = dataClusterUserDetailsService;
-    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .userDetailsService(userDetailsService)
-                .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
-                .anyRequest().authenticated()
+        http.csrf().disable()
+                .authorizeRequests().antMatchers("/loginFailed").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/**").authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+                .loginPage("/login").successForwardUrl("/loginSuccess")
+                .permitAll().and().authenticationProvider(new CustomAuthentication());
     }
 
 
