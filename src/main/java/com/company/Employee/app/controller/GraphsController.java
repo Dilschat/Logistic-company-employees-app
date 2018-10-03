@@ -3,6 +3,7 @@ package com.company.Employee.app.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.company.Employee.app.service.CanvasjsChartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,7 +22,7 @@ public class GraphsController {
     public String springMVC(ModelMap modelMap) {
         List<List<Map<Object, Object>>> canvasjsDataList = canvasjsChartService.getCanvasjsChartData();
         modelMap.addAttribute("dataPointsList", canvasjsDataList);
-        return "chart";
+        return "jsp/chart";
     }
 
 }

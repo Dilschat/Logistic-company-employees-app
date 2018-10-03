@@ -2,24 +2,14 @@ package com.company.Employee.app.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.List;
+import java.util.Map;
 
-public interface CanvasjsChartService {
+import com.company.Employee.app.model.CanvasjsChartDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-    List<List<Map<Object, Object>>> getCanvasjsChartData();
-
-}
-
-
-//CanvasjsChartServiceImpl.java
-package com.canvasjs.chart.services;
-
-        import java.util.List;
-        import java.util.Map;
-
-        import org.springframework.beans.factory.annotation.Autowired;
-
-        import com.canvasjs.chart.daos.CanvasjsChartDao;
-
+@Component
 public class CanvasjsChartServiceImpl implements CanvasjsChartService {
 
     @Autowired
