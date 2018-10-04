@@ -4,13 +4,13 @@ public class LoginResponse {
     private String username;
     private String password;
     private String role;
-    private String token;
+    private String error;
 
-    public LoginResponse(String username, String password, String role, String token) {
+    public LoginResponse(String username, String password, String role, String error) {
         this.username = username;
         this.password = password;
         this.role = role;
-        this.token = token;
+        this.error = error;
     }
 
     public String getUsername() {
@@ -37,11 +37,11 @@ public class LoginResponse {
         this.role = role;
     }
 
-    public String getToken() {
-        return token;
+    public String getError() {
+        return error;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setError(String error) {
+        this.error = error;
     }
 }
