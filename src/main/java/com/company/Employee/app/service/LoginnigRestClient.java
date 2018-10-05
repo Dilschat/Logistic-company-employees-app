@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 public class LoginnigRestClient implements LoginningDataClusterClient {
     @Override
     public Response login(String login, String password) {
-        return null;
+        return new Response("user","password","USER", null);
     }
 
     @Override
     public Response login(String login) {
-        return null;
+        return new Response("user","password","USER", null);
     }
 }
