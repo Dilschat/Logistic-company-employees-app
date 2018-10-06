@@ -1,7 +1,7 @@
 package com.employee.app.Employee.app.service;
 
 
-import com.employee.app.Employee.app.model.Response;
+import com.employee.app.Employee.app.model.LoginResponse;
 import org.junit.Test;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +20,7 @@ public class DataClusterUserDetailsServiceTest {
     @Test
     public void loadUserByUsername() throws IOException {
         LoginnigRestClient client = mock(LoginnigRestClient.class);
-        when(client.login("user")).thenReturn(new Response("user","password","USER", null));
+        when(client.login("user")).thenReturn(new LoginResponse("user","password","USER", null));
         DataClusterUserDetailsService userDetailsService = new DataClusterUserDetailsService(client);
         UserDetails retrievedDetails = userDetailsService.loadUserByUsername("user");
         UserDetails expectedDetails =       User
@@ -35,7 +35,7 @@ public class DataClusterUserDetailsServiceTest {
 //    @Test
 //    public void cantLoadUserByUsername() {
 //        LoginnigRestClient client = mock(LoginnigRestClient.class);
-//        when(client.login("user")).thenReturn(new Response("user","password","USER", null));
+//        when(client.login("user")).thenReturn(new LoginResponse("user","password","USER", null));
 //        DataClusterUserDetailsService userDetailsService = new DataClusterUserDetailsService(client);
 //        UserDetails retrievedDetails = userDetailsService.loadUserByUsername("user1");
 //        UserDetails expectedDetails =       User

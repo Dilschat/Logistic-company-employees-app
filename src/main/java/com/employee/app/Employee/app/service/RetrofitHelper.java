@@ -1,6 +1,7 @@
 package com.employee.app.Employee.app.service;
 
-import com.employee.app.Employee.app.service.interfaces.UserByLogin;
+import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
+import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -12,9 +13,14 @@ public class RetrofitHelper {
 
     private static final String BASE_URL = "http://10.240.17.182:5000";
 
-    public static Call<UserByLogin.UserInfo> userByLogin(String login){
-        UserByLogin user = getRetrofit().create(UserByLogin.class);
-        return user.userByLogin(login);
+    public static Call<UserByLoginRequest.UserInfo> userByLogin(String login){
+        UserByLoginRequest retrofit = getRetrofit().create(UserByLoginRequest.class);
+        return retrofit.userByLogin(login);
+    }
+
+    public static Call<OrdersToApproveRequest.OrdersToApproveResponse> ordersToApprove(){
+        OrdersToApproveRequest retrofit = getRetrofit().create(OrdersToApproveRequest.class);
+        return retrofit.ordersToApprove();
     }
 
     /**

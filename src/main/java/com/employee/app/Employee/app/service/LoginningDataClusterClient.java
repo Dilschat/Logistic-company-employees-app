@@ -1,7 +1,7 @@
 package com.employee.app.Employee.app.service;
 
 
-import com.employee.app.Employee.app.model.Response;
+import com.employee.app.Employee.app.model.LoginResponse;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ public interface LoginningDataClusterClient {
      *
      * @return string that contains access token
      */
-    Response login(String login, String password) throws IOException;
-    Response login(String login) throws IOException;
+    LoginResponse login(String login, String password) throws IOException;
+    LoginResponse login(String login) throws IOException;
 
 }

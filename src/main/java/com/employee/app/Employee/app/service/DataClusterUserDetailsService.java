@@ -1,6 +1,6 @@
 package com.employee.app.Employee.app.service;
 
-import com.employee.app.Employee.app.model.Response;
+import com.employee.app.Employee.app.model.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,17 +23,17 @@ public class DataClusterUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        Response userDataResponse = null;
+        LoginResponse userDataLoginResponse = null;
         try {
-            userDataResponse = loginnigRestClient.login(login);
+            userDataLoginResponse = loginnigRestClient.login(login);
         } catch (IOException e) {
             e.printStackTrace();
         }
         UserDetails details = User
                 .withDefaultPasswordEncoder()
-                .username(userDataResponse.getUsername())
-                .password(userDataResponse.getPassword())
-                .roles(userDataResponse.getRole())
+                .username(userDataLoginResponse.getUsername())
+                .password(userDataLoginResponse.getPassword())
+                .roles(userDataLoginResponse.getRole())
                 .build();
 
         return details;
