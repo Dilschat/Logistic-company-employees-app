@@ -1,0 +1,17 @@
+
+.backg {
+  background: url(land.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+#backWhite {
+  background-color: white;
+  position: relative;
+  z-index: 2;
+  margin-left: 65%;
+  margin-top: 9%;
+}
+
