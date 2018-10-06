@@ -25,10 +25,11 @@ public class Order {
     @Expose
     private String delivery_type; //normal or express
 
-    private String sender_firstname, sender_lastname, sender_address, sender_country, sender_region,
-            sender_city, sender_street, sender_building_number, sender_additional_info;
-    private String receiver_firstname, receiver_lastname, receiver_address, receiver_country,
-            receiver_region, receiver_city, receiver_street, receiver_building_number,
+    private String sender_firstname, sender_lastname,
+            sender_country, sender_region, sender_city, sender_street, sender_building_number,
+            sender_additional_info;
+    private String receiver_firstname, receiver_lastname,
+            receiver_country, receiver_region, receiver_city, receiver_street, receiver_building_number,
             receiver_additional_info;
 
     private String package_height, package_length, package_width, package_weight;
@@ -73,14 +74,6 @@ public class Order {
 
     public void setSender_lastname(String sender_lastname) {
         this.sender_lastname = sender_lastname;
-    }
-
-    public String getSender_address() {
-        return sender_address;
-    }
-
-    public void setSender_address(String sender_address) {
-        this.sender_address = sender_address;
     }
 
     public String getSender_country() {
@@ -145,14 +138,6 @@ public class Order {
 
     public void setReceiver_lastname(String receiver_lastname) {
         this.receiver_lastname = receiver_lastname;
-    }
-
-    public String getReceiver_address() {
-        return receiver_address;
-    }
-
-    public void setReceiver_address(String receiver_address) {
-        this.receiver_address = receiver_address;
     }
 
     public String getReceiver_country() {

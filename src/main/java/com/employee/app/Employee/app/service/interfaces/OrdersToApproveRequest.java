@@ -20,21 +20,9 @@ public interface OrdersToApproveRequest {
 
 
     class OrdersToApproveResponse {
-
-        @SerializedName("timestamp")
-        @Expose
-        private String timestamp;
         @SerializedName("orders")
         @Expose
         private List<Order> orders = null;
-
-        public String getTimestamp() {
-            return timestamp;
-        }
-
-        public void setTimestamp(String timestamp) {
-            this.timestamp = timestamp;
-        }
 
         public List<Order> getOrders() {
             return orders;
