@@ -39,9 +39,15 @@ public class Order {
             @Override
             public int compare(Order o1, Order o2) {
                 try {
-                    Date d1 = DateHelper.getTime(o1.getTimestamp());
-                    Date d2 = DateHelper.getTime(o2.getTimestamp());
-                    return d1.compareTo(d2);
+                    if (o1.getDelivery_type().equals(o2.getDelivery_type())) {
+                        Date d1 = DateHelper.getTime(o1.getTimestamp());
+                        Date d2 = DateHelper.getTime(o2.getTimestamp());
+                        return d1.compareTo(d2);
+                    } else {
+                        if(o1.getDelivery_type().equals("express"))
+                            return 1;
+                        return -1;
+                    }
                 } catch (ParseException e) {
                     return 0;
                 }

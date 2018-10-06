@@ -1,5 +1,8 @@
 package com.employee.app.Employee.app.service;
 
+import com.employee.app.Employee.app.model.Order;
+import com.employee.app.Employee.app.model.RequestError;
+import com.employee.app.Employee.app.service.interfaces.ApproveOrder;
 import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
 import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
 import retrofit2.Call;
@@ -21,6 +24,11 @@ public class RetrofitHelper {
     public static Call<OrdersToApproveRequest.OrdersToApproveResponse> ordersToApprove(){
         OrdersToApproveRequest retrofit = getRetrofit().create(OrdersToApproveRequest.class);
         return retrofit.ordersToApprove();
+    }
+
+    public static Call<RequestError> approveOrder(Order order){
+        ApproveOrder retrofit = getRetrofit().create(ApproveOrder.class);
+        return retrofit.approveOrder(order);
     }
 
     /**

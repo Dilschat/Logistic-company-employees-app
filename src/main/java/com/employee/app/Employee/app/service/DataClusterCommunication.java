@@ -3,6 +3,7 @@ package com.employee.app.Employee.app.service;
 
 import com.employee.app.Employee.app.model.Order;
 import com.employee.app.Employee.app.model.LoginResponse;
+import com.employee.app.Employee.app.model.RequestError;
 import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
 import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
 import retrofit2.Call;
@@ -28,11 +29,30 @@ public class DataClusterCommunication {
         return result;
     }
 
+    /**
+     * returns all orders that must be approved
+     * @return
+     * @throws IOException
+     */
     public static List<Order> getOrderToApprove() throws IOException {
         Call<OrdersToApproveRequest.OrdersToApproveResponse> call = RetrofitHelper.ordersToApprove();
 
         Response<OrdersToApproveRequest.OrdersToApproveResponse> response =
                 call.execute();
         return response.body().getOrders();
+    }
+
+    /**
+     * API request to data clister for apporving some order
+     * @param order to approve
+     * @return
+     * @throws IOException
+     */
+    public static RequestError approveOrder(Order order) throws IOException {
+        Call<RequestError> call = RetrofitHelper.approveOrder(order);
+
+        Response<RequestError> response =
+                call.execute();
+        return response.body();
     }
 }

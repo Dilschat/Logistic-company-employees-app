@@ -11,9 +11,13 @@ import java.util.List;
  */
 public class OrdersToApproveManager {
 
+    private Thread thread;
 
     public void startOrdersToApproveDaemon(){
-        Thread thread = new Thread(new OrdersToApproveManager.OrdersToApproveRunnable());
+        thread = new Thread(new OrdersToApproveManager.OrdersToApproveRunnable());
+    }
+
+    public void run(){
         thread.setDaemon(true); // more demon that Malebolgia
         thread.start();
     }
