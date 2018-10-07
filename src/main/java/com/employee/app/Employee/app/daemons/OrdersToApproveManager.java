@@ -13,7 +13,7 @@ public class OrdersToApproveManager {
 
     private Thread thread;
 
-    public void startOrdersToApproveDaemon(){
+    public OrdersToApproveManager(){
         thread = new Thread(new OrdersToApproveManager.OrdersToApproveRunnable());
     }
 
@@ -32,17 +32,16 @@ public class OrdersToApproveManager {
 
         @Override
         public void run() {
-            boolean personReadingThisCode = true;
-            while (personReadingThisCode) {
-                synchronized (this) {
+            synchronized (this) {
+                while (true) {
                     try {
-                        wait(5000);
                         List<Order> orders = DataClusterCommunication.getOrderToApprove();
                         if (orders != null) {
                             for (Order order : orders) {
                                 queue.putOrder(order);
                             }
                         }
+                        wait(5000);
                     } catch (InterruptedException e) {
                         e.printStackTrace(); // shouldn't happen "WHAT ARE YOU DOING IN MY SWAMP?"
                     } catch (IOException e) {
