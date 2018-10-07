@@ -1,4 +1,4 @@
-package com.employee.app.Employee.app.daemons;
+package com.employee.app.Employee.app.service.daemons;
 
 import com.employee.app.Employee.app.model.Order;
 import com.employee.app.Employee.app.service.DataClusterCommunication;
@@ -6,23 +6,22 @@ import com.employee.app.Employee.app.service.DataClusterCommunication;
 import java.io.IOException;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by niyaz on 06.10.2018.
  */
 public class OrdersToApproveManager {
 
-    private Thread thread;
+    private static Thread thread;
 
-    public OrdersToApproveManager(){
+    public static void run(){
         thread = new Thread(new OrdersToApproveManager.OrdersToApproveRunnable());
-    }
-
-    public void run(){
         thread.setDaemon(true); // more demon that Malebolgia
         thread.start();
     }
 
-    public class OrdersToApproveRunnable implements Runnable {
+    public static class OrdersToApproveRunnable implements Runnable {
 
         private OrdersToApproveQueue queue;
 
@@ -35,10 +34,13 @@ public class OrdersToApproveManager {
             synchronized (this) {
                 while (true) {
                     try {
-                        List<Order> orders = DataClusterCommunication.getOrderToApprove();
-                        if (orders != null) {
-                            for (Order order : orders) {
-                                queue.putOrder(order);
+                        if(queue.canAdd()) {
+                            List<Order> orders = DataClusterCommunication.getOrderToApprove();
+
+                            if (orders != null) {
+                                for (Order order : orders) {
+                                    queue.putOrder(order);
+                                }
                             }
                         }
                         wait(5000);

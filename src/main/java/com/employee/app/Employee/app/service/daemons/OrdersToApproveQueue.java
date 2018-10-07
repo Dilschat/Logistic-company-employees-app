@@ -1,14 +1,16 @@
-package com.employee.app.Employee.app.daemons;
+package com.employee.app.Employee.app.service.daemons;
 
 import com.employee.app.Employee.app.model.Order;
+import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
-import java.util.PriorityQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * Created by niyaz on 06.10.2018.
  */
+
+@Component
 public class OrdersToApproveQueue {
     private static volatile OrdersToApproveQueue instance;
     private static volatile PriorityBlockingQueue<Order> orders;
@@ -48,6 +50,13 @@ public class OrdersToApproveQueue {
         }
     }
 
+    public boolean canAdd(){
+        return orders.size()<500;
+    }
+
+
+
+
 
     private OrdersToApproveQueue() {}
 
@@ -60,7 +69,7 @@ public class OrdersToApproveQueue {
     public static OrdersToApproveQueue getInstance() {
         OrdersToApproveQueue localInstance = instance;
         if (localInstance == null) {
-            synchronized (OrdersToApproveQueue.class) {
+            synchronized (lock) {
                 localInstance = instance;
                 if (localInstance == null) {
                     instance = localInstance = new OrdersToApproveQueue();
