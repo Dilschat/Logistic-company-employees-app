@@ -6,12 +6,14 @@ import com.employee.app.Employee.app.model.LoginResponse;
 import com.employee.app.Employee.app.model.RequestError;
 import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
 import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import retrofit2.Call;
 import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.List;
-
+@Component
 public class DataClusterCommunication {
 
     /**

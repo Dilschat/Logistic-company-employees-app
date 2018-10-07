@@ -1,6 +1,6 @@
 package com.employee.app.Employee.app;
 
-import com.employee.app.Employee.app.daemons.OrdersToApproveManager;
+import com.employee.app.Employee.app.service.daemons.OrdersToApproveManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

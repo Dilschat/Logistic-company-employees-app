@@ -1,7 +1,7 @@
 package com.employee.app.Employee.app.model;
 
 
-import com.employee.app.Employee.app.helpers.DateHelper;
+import com.employee.app.Employee.app.service.helpers.DateHelper;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
