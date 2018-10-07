@@ -31,6 +31,15 @@ public class OrdersController {
         return orderView;
     }
 
+    @GetMapping("/add_order")
+    public ModelAndView addOrder(ModelAndView orderView){
+        Order order = new Order();
+        orderView.addObject(order);
+        orderView.setViewName("thymeleaf/addOrder");
+        return orderView;
+    }
+
+
     @PostMapping("/next_order")
     public String submitOrder(@ModelAttribute Order order) throws IOException {
         DataClusterCommunication.approveOrder(order);
