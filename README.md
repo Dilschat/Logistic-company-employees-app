@@ -1,4 +1,5 @@
 # Web app for all employees of Logistic company 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9f6f781467354a908c3710b2883332a8)](https://www.codacy.com/app/Dilschat/Logistic-company-employees-app?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OmOmTeam/Logistic-company-employees-app&amp;utm_campaign=Badge_Grade)
 
 ## Quickstart
 Install Maven and JDK 8.
