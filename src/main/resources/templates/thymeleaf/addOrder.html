@@ -164,50 +164,73 @@
 
         <form action="#" th:action="@{/next_order}" th:object="${order}" method="post">
 
-            <div class="modal-body">
-                <label>First Name</label>
-
-                <input class="form-control" type="text" placeholder="First Name" th:field="*{sender_firstname}"/>
-                <label>Last Name</label>
-                <input class="form-control" type="text" placeholder="Last Name" th:field="*{sender_lastname}"/>
-                <label>Country</label>
-                <input class="form-control" type="text" placeholder="Country" th:field="*{sender_country}"/>
-                <label>Region</label>
-
-                <input class="form-control" type="text" placeholder="Region" th:field="*{sender_region}"/>
-                <label>City</label>
-
-                <input class="form-control" type="text" placeholder="City" th:field="*{sender_city}"/>
-                <label>Street</label>
-                <input class="form-control" type="text" placeholder="Street" th:field="*{sender_street}"/>
-                <label>Building number</label>
-                <input class="form-control" type="text" placeholder="Building number"
-                       th:field="*{sender_building_number}"/>
-                <label>Aditional information</label>
-                <input class="form-control" type="text" placeholder="Aditional information"
-                       th:field="*{sender_additional_info}"/>
-                <label>Package height</label>
-                <input class="form-control" type="text" placeholder="Package height" th:field="*{package_height}"/>
-                <label>Package length</label>
-                <input class="form-control" type="text" placeholder="Package length" th:field="*{package_length}"/>
-                <label>Package weight</label>
-                <input class="form-control" type="text" placeholder="Package weight" th:field="*{package_weight}"/>
-                <label>Package width</label>
-                <input class="form-control" type="text" placeholder="Package width" th:field="*{package_width}"/>
-                <label>Delivery type</label>
-                <input class="form-control" type="text" placeholder="Delivery type" th:field="*{delivery_type}"/>
-                <label>Receiver Number</label>
-                <input class="form-control" type="text" placeholder="Receiver Number" th:field="*{receiver_number}"/>
-                <label>Sender Number</label>
-                <input class="form-control" type="text" placeholder="Sender Number" th:field="*{sender_number}"/>
-                <label>Id</label>
-                <input class="form-control" type="text" th:field="*{id}"/>
-
+            <p><h5>Information about customer:</h5></p>
+            <div class="form-row">
+              <div class="col-md-3">
+                <input class="form-control",size=20, placeholder="First Name" th:field="*{content}"/>             
+              </div>
+              <div class="col-md-3">
+                <input class="form-control",size=20, placeholder="Last Name" th:field="*{content}"/>
+              </div>
+              <div class="col-md-3">
+                <input type="tel" class="form-control",size=20, placeholder="Phone number"/>
+              </div>
+              <div class="col-md-3">
+                <input class="form-control", size=20, placeholder="Receiver Number" th:field="*{content}"/>
+              </div>
             </div>
-            <!-- footer -->
+            <br>
+              <p><h5>Delivery address:</h5></p>
+              <div class="form-row">
+                <div class="col-md-3">
+                  <input class="form-control", size=20, placeholder="Country" th:field="*{content}"/><br>
+                  <input class="form-control", size=20, placeholder="Region" th:field="*{content}"/><br>
+                  <input type="number" class="form-control", size=20, placeholder="Building number" th:field="*{content}"/>
+                </div>
+                <div class="col-md-3">
+                  <input class="form-control", size=20, placeholder="City" th:field="*{content}"/><br>
+                  <input class="form-control", size=20, placeholder="Street" th:field="*{content}"/><br>
+                  <input type="number", class="form-control", size=20, placeholder="Apartment" th:field="*{content}"/>
+                </div>
+                <div class="col-md-4">
+                  <img id="orderImage" src="images/addOrder1.jpg">
+                  
+                </div>
+              </div>            
+              <br>
+               <p><h5>Package description:</h5></p>
+              <div class="form-row">
+                <div class="col-md-2.5">
+                 <input class="form-control", type="number", placeholder="Package height in cm" th:field="*{content}"/>
+                </div>
+                <div class="col-md-2.5">
+                 <input class="form-control", type="number", placeholder="Package length in cm" th:field="*{content}"/>
+                </div>
+                <div class="col-md-2.5">
+                  <input class="form-control", type="number", placeholder="Package weight in kg" th:field="*{content}"/>
+                </div>
+                <div class="col-md-2.5">
+                  <input list="deliveryType" class="form-control", placeholder="Delivery type" th:field="*{content}"/>
+                  <datalist id="deliveryType">
+                    <option>By car</option>
+                    <option>By ship</option>
+                    <option>By train</option>
+                  </datalist>
+                </div>
+                <div class="col-md-2.5">
+                  <input class="form-control" placeholder="OrderId" th:field="*{id}"/>
+                </div>
+              </div>
+              <br>
+
+
+              <textarea class="form-control", cols="20", placeholder="Aditional information" th:field="*{content}"></textarea>
+              
+            
+           <!-- footer -->
             <div class="modal-footer">
-                <input class="btn btn-primary" type="submit" name = "action" value="Submit"/>
-                <input class="btn btn-primary" type="submit" name = "action" value="Cancel"/>
+               <input class="btn btn-primary" type="submit" value="Submit" />
+               <input class="btn btn-primary" type="reset" value="Reset" />
             </div>
         </form>
 
