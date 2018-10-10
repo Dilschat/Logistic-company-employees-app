@@ -15,6 +15,7 @@
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"/>
     <!-- Custom styles for this template-->
     <link rel="stylesheet" type="text/css" th:href="@{css/sb-admin.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/custom.css}"/>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -164,53 +165,52 @@
 
         <form action="#" th:action="@{/next_order}" th:object="${order}" method="post">
 
-            <p><h5>Information about customer:</h5></p>
+             <p><h5>Information about customer:</h5></p>
             <div class="form-row">
               <div class="col-md-3">
-                <input class="form-control",size=20, placeholder="First Name" th:field="*{content}"/>             
+                <input class="form-control",size=20, placeholder="First Name" th:field="*{sender_firstname}"/>
               </div>
               <div class="col-md-3">
-                <input class="form-control",size=20, placeholder="Last Name" th:field="*{content}"/>
+                <input class="form-control",size=20, placeholder="Last Name" th:field="*{sender_lastname}"/>
               </div>
               <div class="col-md-3">
-                <input type="tel" class="form-control",size=20, placeholder="Phone number"/>
+                <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{sender_number}"/>
               </div>
               <div class="col-md-3">
-                <input class="form-control", size=20, placeholder="Receiver Number" th:field="*{content}"/>
+                <input class="form-control", size=20, placeholder="Receiver Number" th:field="*{receiver_number}"/>
               </div>
             </div>
             <br>
               <p><h5>Delivery address:</h5></p>
               <div class="form-row">
                 <div class="col-md-3">
-                  <input class="form-control", size=20, placeholder="Country" th:field="*{content}"/><br>
-                  <input class="form-control", size=20, placeholder="Region" th:field="*{content}"/><br>
-                  <input type="number" class="form-control", size=20, placeholder="Building number" th:field="*{content}"/>
+                  <input class="form-control", size=20, placeholder="Country" th:field="*{sender_country}"/><br>
+                  <input class="form-control", size=20, placeholder="Region" th:field="*{sender_region}"/><br>
+                  <input type="number" class="form-control", size=20, placeholder="Building number" th:field="*{sender_building_number}"/>
                 </div>
                 <div class="col-md-3">
-                  <input class="form-control", size=20, placeholder="City" th:field="*{content}"/><br>
-                  <input class="form-control", size=20, placeholder="Street" th:field="*{content}"/><br>
-                  <input type="number", class="form-control", size=20, placeholder="Apartment" th:field="*{content}"/>
+                  <input class="form-control", size=20, placeholder="City" th:field="*{sender_city}"/><br>
+                  <input class="form-control", size=20, placeholder="Street" th:field="*{sender_street}"/><br>
+                  <input type="number", class="form-control", size=20, placeholder="Apartment"/>
                 </div>
                 <div class="col-md-4">
                   <img id="orderImage" src="images/addOrder1.jpg">
-                  
                 </div>
               </div>            
               <br>
                <p><h5>Package description:</h5></p>
               <div class="form-row">
                 <div class="col-md-2.5">
-                 <input class="form-control", type="number", placeholder="Package height in cm" th:field="*{content}"/>
+                 <input class="form-control", type="number", placeholder="Package height in cm" th:field="*{package_height}"/>
                 </div>
                 <div class="col-md-2.5">
-                 <input class="form-control", type="number", placeholder="Package length in cm" th:field="*{content}"/>
+                 <input class="form-control", type="number", placeholder="Package length in cm" th:field="*{package_length}"/>
                 </div>
                 <div class="col-md-2.5">
-                  <input class="form-control", type="number", placeholder="Package weight in kg" th:field="*{content}"/>
+                  <input class="form-control", type="number", placeholder="Package weight in kg" th:field="*{package_weight}"/>
                 </div>
                 <div class="col-md-2.5">
-                  <input list="deliveryType" class="form-control", placeholder="Delivery type" th:field="*{content}"/>
+                  <input list="deliveryType" class="form-control", placeholder="Delivery type" th:field="*{delivery_type}"/>
                   <datalist id="deliveryType">
                     <option>By car</option>
                     <option>By ship</option>
@@ -223,14 +223,13 @@
               </div>
               <br>
 
-
-              <textarea class="form-control", cols="20", placeholder="Aditional information" th:field="*{content}"></textarea>
+              <textarea class="form-control", cols="20", placeholder="Aditional information" th:field="*{sender_additional_info}"></textarea>
               
             
            <!-- footer -->
             <div class="modal-footer">
-               <input class="btn btn-primary" type="submit" value="Submit" />
-               <input class="btn btn-primary" type="reset" value="Reset" />
+               <input class="btn btn-primary" type="submit" name = "action" value="Submit"/>
+               <input class="btn btn-primary" type="submit" name = "action" value="Cancel"/>
             </div>
         </form>
 
