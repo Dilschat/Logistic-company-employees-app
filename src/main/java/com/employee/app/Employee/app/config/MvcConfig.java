@@ -9,8 +9,8 @@ public class MvcConfig implements WebMvcConfigurer {
 
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/home").setViewName("thymeleaf/home");
-        registry.addViewController("/").setViewName("thymeleaf/main");
-        registry.addViewController("/main").setViewName("thymeleaf/main");
+        registry.addViewController("/").setViewName("thymeleaf/order_manager_main");
+        registry.addViewController("/main").setViewName("thymeleaf/order_manager_main");
         registry.addViewController("/login").setViewName("thymeleaf/login");
     }
 
