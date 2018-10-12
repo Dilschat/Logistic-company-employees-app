@@ -1,17 +1,19 @@
 package com.employee.app.Employee.app.service;
 
 
+import com.employee.app.Employee.app.model.DispatchedOrder;
 import com.employee.app.Employee.app.model.Order;
 import com.employee.app.Employee.app.model.LoginResponse;
 import com.employee.app.Employee.app.model.RequestError;
+import com.employee.app.Employee.app.service.helpers.RetrofitHelper;
 import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
 import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import retrofit2.Call;
 import retrofit2.Response;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 @Component
 public class DataClusterCommunication {
@@ -56,5 +58,13 @@ public class DataClusterCommunication {
         Response<RequestError> response =
                 call.execute();
         return response.body();
+    }
+
+    public List<Order> geDispatchedOrders(){
+        return new ArrayList<>();
+    }
+
+    public DispatchedOrder geDispatchedOrder(String id){
+        return new DispatchedOrder();
     }
 }
