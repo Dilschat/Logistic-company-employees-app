@@ -191,26 +191,23 @@
                 <div class="col-md-3">
                   <input class="form-control", size=20, placeholder="City" th:field="*{sender_city}"/><br>
                   <input class="form-control", size=20, placeholder="Street" th:field="*{sender_street}"/><br>
-                  <input type="number", class="form-control", size=20, placeholder="Apartment"/>
                 </div>
-                <div class="col-md-4">
-                  <img id="orderImage" src="images/addOrder1.jpg">
-                </div>
+
               </div>            
               <br>
                <p><h5>Package description:</h5></p>
               <div class="form-row">
                 <div class="col-md-2.5">
-                 <input class="form-control", type="number", placeholder="Package height in cm" th:field="*{package_height}"/>
+                 <input class="form-control" type="number" placeholder="Package height in cm" th:field="*{package_height}"/>
                 </div>
                 <div class="col-md-2.5">
-                 <input class="form-control", type="number", placeholder="Package length in cm" th:field="*{package_length}"/>
+                 <input class="form-control" type="number" placeholder="Package length in cm" th:field="*{package_length}"/>
                 </div>
                 <div class="col-md-2.5">
-                  <input class="form-control", type="number", placeholder="Package weight in kg" th:field="*{package_weight}"/>
+                  <input class="form-control" type="number" placeholder="Package weight in kg" th:field="*{package_weight}"/>
                 </div>
                 <div class="col-md-2.5">
-                  <input list="deliveryType" class="form-control", placeholder="Delivery type" th:field="*{delivery_type}"/>
+                  <input list="deliveryType" class="form-control" placeholder="Delivery type" th:field="*{delivery_type}"/>
                   <datalist id="deliveryType">
                     <option>By car</option>
                     <option>By ship</option>
@@ -223,8 +220,7 @@
               </div>
               <br>
 
-              <textarea class="form-control", cols="20", placeholder="Aditional information" th:field="*{sender_additional_info}"></textarea>
-              
+
             
            <!-- footer -->
             <div class="modal-footer">
@@ -266,16 +262,16 @@
             </div>
         </div>
         <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.bundle.min.js}"></script>
         <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script th:src="@{/webjars/jquery-easing/1.3/jquery.easing.min.js}"></script>
         <!-- Page level plugin JavaScript-->
-        <script src="vendor/chart.js/Chart.min.js"></script>
+        <script th:src="@{/webjars/chartjs/2.7.2/Chart.min.js}"></script>
         <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin.min.js"></script>
+        <script th:src="@{js/sb-admin.min.js}"></script>
         <!-- Custom scripts for this page-->
-        <script src="js/sb-admin-charts.js"></script>
+        <script th:src="@{js/sb-admin-charts.js}"></script>
     </div>
 </div>
 </body>
