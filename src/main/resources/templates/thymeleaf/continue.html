@@ -29,10 +29,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
 
-
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Validate next order">
                 <a class="nav-link" th:href="@{/next_order}">
-                    <i class="fa fa-fw fa-shopping-cart"></i>
+                    <i class="fa fa-fw fa-globe"></i>
+                    <span class="nav-link-text">Validate next order</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add new order">
+                <a class="nav-link" th:href="@{/add_order}">
+                    <i class="fa fa-fw fa-address-card"></i>
                     <span class="nav-link-text">Add new order</span>
                 </a>
             </li>
@@ -203,16 +209,16 @@
             </div>
         </div>
         <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.bundle.min.js}"></script>
         <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script th:src="@{/webjars/jquery-easing/1.3/jquery.easing.min.js}"></script>
         <!-- Page level plugin JavaScript-->
-        <script src="vendor/chart.js/Chart.min.js"></script>
+        <script th:src="@{/webjars/chartjs/2.7.2/Chart.min.js}"></script>
         <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin.min.js"></script>
+        <script th:src="@{js/sb-admin.min.js}"></script>
         <!-- Custom scripts for this page-->
-        <script src="js/sb-admin-charts.js"></script>
+        <script th:src="@{js/sb-admin-charts.js}"></script>
     </div>
 </div>
 </body>
