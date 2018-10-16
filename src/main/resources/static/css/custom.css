@@ -1,6 +1,6 @@
 
 .backg {
-  background: url(land.jpg) no-repeat center center fixed;
+  background: url(../land.jpg) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
   overflow: hidden;
@@ -15,3 +15,336 @@
   margin-top: 9%;
 }
 
+/* Rectangle */
+.rectangle {
+	position: absolute;
+	width: 800px;
+	height: 530px;
+
+	background: #FFFFFF;
+	border-radius: 4px;
+
+}
+
+
+
+/* Armchair */
+.title_head {
+	position: absolute;
+	width: 167px;
+	height: 38px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 35px;
+	font-size: 24px;
+
+	color: #4F4F4F;
+}
+
+
+
+
+/* 614824 */
+
+.vend_num {
+	position: absolute;
+	width: 106px;
+	height: 19px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 16px;
+
+	color: #333333;
+	margin-left: 120px;
+	margin-top: 37px;
+}
+
+
+
+/* 33 */
+
+.tot_amount_num {
+	position: absolute;
+	width: 25px;
+	height: 15px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 16px;
+
+	color: #828282;
+	margin-top: 70px;
+	margin-left: 120px;
+
+}
+
+
+
+/* Vendor code: */
+
+.vend_code {
+	position: absolute;
+	width: 115px;
+	height: 26px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	font-size: 18px;
+
+	color: #4F4F4F;
+	margin-top: 35px;
+
+}
+
+
+
+/* Tropical plant with an edible multiple fruit consisting of coalesced berries, also called pineapples, and the most economically significant plant in the Bromeliaceae family. After the first fruit is produced, side shoots (called 'suckers' by commercial growers) are produced in the leaf axils of the main stem. After the first fruit is produced. */
+
+.desc_text {
+	position: absolute;
+	width: 320px;
+	height: 117px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 25px;
+
+	color: #333333;
+	margin-top: 184px;
+}
+
+
+
+/* Line */
+.line1 {
+	position: absolute;
+	width: 800px;
+	height: 0px;
+
+	border: 1px solid #BDBDBD;
+}
+
+
+/* Rectangle 2 */
+.rect2 {
+	position: absolute;
+	width: 90px;
+	height: 40px;
+
+	background: #F2F2F2;
+}
+
+
+
+/* Items Description: */
+.item_desc {
+	position: absolute;
+	width: 147px;
+	height: 14px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	font-size: 16px;
+
+	color: #4F4F4F;
+	margin-top: 152px;
+}
+
+
+
+/* Total amount: */
+
+.tot_amount {
+	position: absolute;
+	width: 113px;
+	height: 21px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	font-size: 16px;
+
+	color: #4F4F4F;
+	margin-top: 70px;
+}
+
+
+
+/* Rectangle 3 */
+
+.rect3 {
+	width: 359px;
+	height: 340px;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	background: #F2F2F2;
+	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/* Measure units: */
+
+.m_unit {
+	position: absolute;
+	width: 113px;
+	height: 35px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	font-size: 16px;
+
+	color: #4F4F4F;
+	margin-top: 103px;
+}
+
+
+
+/* Cost price: */
+
+.cost_price {
+	position: absolute;
+	width: 126px;
+	height: 24px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	font-size: 16px;
+
+	color: #4F4F4F;
+	margin-top: 103px;
+	margin-left: 220px;
+}
+
+
+
+/* Sale price: */
+
+.sale_price {
+	position: absolute;
+	width: 162px;
+	height: 17px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	font-size: 16px;
+
+	color: #4F4F4F;
+	margin-left: 220px;
+	margin-top: 70px;
+
+}
+
+
+
+/* $50 */
+
+.cost_price_num {
+	position: absolute;
+	width: 27px;
+	height: 19px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 16px;
+
+	color: #828282;
+	margin-top: 103px;
+	margin-left: 310px;
+}
+
+
+
+/* $150 */
+
+.sale_price_num {
+	position: absolute;
+	width: 36px;
+	height: 19px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 16px;
+
+	color: #828282;
+	margin-left: 319px;
+	margin-top: 70px;
+}
+
+
+
+/* pcs */
+
+.m_unit_text {
+	position: absolute;
+	width: 26px;
+	height: 19px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 16px;
+
+	color: #828282;
+	margin-top: 103px;
+	margin-left: 120px;
+}
+
+
+
+/* Line 2 */
+
+.line2 {
+	position: absolute;
+	width: 368px;
+	height: 0px;
+
+	border: 1px solid #F2F2F2;
+}
+
+#line21 {
+	margin-top: 60px;
+}
+
+#line22 {
+	margin-top: 135px;
+}
+
+.orderImage {
+	width: 140%;
+	height: 140%;
+	position: absolute;
+	top: -20%;
+	left: 7%;
+}
+
+#deliveryLabel {
+	position: absolute;
+	top: 38%;
+	left: 60%;
+}
