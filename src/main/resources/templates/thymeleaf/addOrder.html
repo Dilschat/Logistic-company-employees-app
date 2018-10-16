@@ -19,7 +19,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">ACME Transport Company</a>
+    <a class="navbar-brand" href="index.html"><img src="images/logo.png"> Transport Company</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -186,7 +186,7 @@
                   <input type="number", class="form-control", size=20, placeholder="Apartment" th:field="*{content}"/>
                 </div>
                 <div class="col-md-4">
-                  <img id="orderImage" src="images/addOrder1.jpg">
+                  <img class="orderImage" src="images/addOrder1.jpg">
                   
                 </div>
               </div>            
@@ -215,12 +215,8 @@
                 </div>
               </div>
               <br>
-
-
               <textarea class="form-control", cols="20", placeholder="Aditional information" th:field="*{content}"></textarea>
-              
-            
-           <!-- footer -->
+             <!-- footer -->
             <div class="modal-footer">
                <input class="btn btn-primary" type="submit" value="Submit" />
                <input class="btn btn-primary" type="reset" value="Reset" />
