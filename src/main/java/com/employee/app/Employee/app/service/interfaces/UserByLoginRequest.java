@@ -7,8 +7,8 @@ import retrofit2.http.*;
 public interface UserByLoginRequest {
 
     @Headers({"Content-Type: application/json"})
-    @GET("/user_by_login")
-    Call<UserByLoginRequest.UserInfo> userByLogin(@Query("login") String login);
+    @POST("/user_by_login")
+    Call<UserByLoginRequest.UserInfo> userByLogin(@Body String login);
 
     public class UserInfo {
         private String password, role, error;

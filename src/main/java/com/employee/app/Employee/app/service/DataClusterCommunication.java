@@ -1,11 +1,9 @@
 package com.employee.app.Employee.app.service;
 
 
-import com.employee.app.Employee.app.model.DispatchedOrder;
-import com.employee.app.Employee.app.model.Order;
-import com.employee.app.Employee.app.model.LoginResponse;
-import com.employee.app.Employee.app.model.RequestError;
+import com.employee.app.Employee.app.model.*;
 import com.employee.app.Employee.app.service.helpers.RetrofitHelper;
+import com.employee.app.Employee.app.service.interfaces.GetEmployeesList;
 import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
 import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
 import org.springframework.stereotype.Component;
@@ -47,13 +45,68 @@ public class DataClusterCommunication {
     }
 
     /**
-     * API request to data clister for apporving some order
+     * API request to data cluster for apporving some order
      * @param order to approve
      * @return
      * @throws IOException
      */
     public static RequestError approveOrder(Order order) throws IOException {
         Call<RequestError> call = RetrofitHelper.approveOrder(order);
+
+        Response<RequestError> response =
+                call.execute();
+        return response.body();
+    }
+
+    /**
+     * API request to data cluster for adding new employee into the database
+     * @param employee to add to database
+     * @return
+     * @throws IOException
+     */
+    public static RequestError registerNewEmployee(Employee employee) throws IOException {
+        Call<RequestError> call = RetrofitHelper.registerNewEmployee(employee);
+
+        Response<RequestError> response =
+                call.execute();
+        return response.body();
+    }
+
+    /**
+     * API request to data cluster for deleting user from the system
+     * @param login of the user to delete
+     * @return
+     * @throws IOException
+     */
+    public static RequestError deleteEmployee(String login) throws IOException {
+        Call<RequestError> call = RetrofitHelper.deleteEmployee(login);
+
+        Response<RequestError> response =
+                call.execute();
+        return response.body();
+    }
+
+    /**
+     * API request to data cluster for getting list of all employees in the system
+     * @return object with error or list of employees
+     * @throws IOException
+     */
+    public static GetEmployeesList.EmployeesList getEmployeesList() throws IOException {
+        Call<GetEmployeesList.EmployeesList> call = RetrofitHelper.getEmployeesList();
+
+        Response<GetEmployeesList.EmployeesList> response =
+                call.execute();
+        return response.body();
+    }
+
+    /**
+     * API request to data cluster for changing access right of the employee
+     * gets login of a user and new role of the user
+     * @return
+     * @throws IOException
+     */
+    public static RequestError changeEmployeesAccessRights(String login, String role) throws IOException {
+        Call<RequestError> call = RetrofitHelper.changeEmployeesAccessRights(login, role);
 
         Response<RequestError> response =
                 call.execute();
