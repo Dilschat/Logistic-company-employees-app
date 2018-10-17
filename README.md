@@ -2,6 +2,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9f6f781467354a908c3710b2883332a8)](https://www.codacy.com/app/Dilschat/Logistic-company-employees-app?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OmOmTeam/Logistic-company-employees-app&amp;utm_campaign=Badge_Grade)
 
 ## Quickstart
+
 + **Install Maven:**
 
 1. Search
@@ -26,7 +27,7 @@ mvn -version
 
 + **Clone repo:**
 ```
-https://github.com/OmOmTeam/Logistic-company-employees-app.git
+git clone https://github.com/OmOmTeam/Logistic-company-employees-app.git
 ```
 
 + **Resolve dependencies**
@@ -34,6 +35,7 @@ Run in the project root:
 ```
 mvn dependency:resolve
 ```
+### Running
 + **Due to datacluster is not finished you need to run  our "fake" flask server.**
 
 ```
