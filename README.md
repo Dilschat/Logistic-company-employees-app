@@ -30,11 +30,12 @@ mvn -version
 git clone https://github.com/OmOmTeam/Logistic-company-employees-app.git
 ```
 
-+ **Resolve dependencies**
++ **Build jar**
 Run in the project root:
 ```
-mvn dependency:resolve
+mvn clean package -DskipTests
 ```
+.jar file (Employee_app-0.0.1-SNAPSHOT.jar) will be stored in generated in the root of project `target` folder .
 ### Running
 + **Due to datacluster is not finished you need to run  our "fake" flask server.**
 
@@ -44,7 +45,7 @@ FLASK_APP=main.py flask run
 
 + **For running Webapp server run in root of project:**
 ```
-./mvnw spring-boot:run
+java -jar Employee_app-0.0.1-SNAPSHOT.jar
 ```
 
 
