@@ -5,6 +5,9 @@ import com.employee.app.Employee.app.model.RequestError;
 import com.employee.app.Employee.app.service.interfaces.ApproveOrder;
 import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
 import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -12,7 +15,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by niyaz on 30.09.2018.
  */
+@Component
 public class RetrofitHelper {
+
 
     private static final String BASE_URL = "http://localhost:5000";
 
@@ -40,4 +45,5 @@ public class RetrofitHelper {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
+
 }
