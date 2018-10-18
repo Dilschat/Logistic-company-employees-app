@@ -194,7 +194,20 @@
                     <input class="form-control", size=20, placeholder="Street" th:field="*{sender_street}"/><br>
                 </div>
 
+
+
             </div>
+
+            <p><h5>Profit:</h5></p>
+                <div class="form-row">
+                    <div class="col-md-3">
+                    <input class="form-control", size=20, placeholder="Street" th:field="*{profitValue}"/><br>
+                    </div>
+                    <div class="col-md-3">
+                    <input class="form-control", size=20, placeholder="Street" th:field="*{profitCurrency}"/><br>
+                    </div>
+                </div>
+
             <br>
             <p><h5>Package description:</h5></p>
             <div class="form-row">
@@ -208,6 +221,9 @@
                     <input class="form-control" type="number" placeholder="Package weight in kg" th:field="*{package_weight}"/>
                 </div>
                 <div class="col-md-2.5">
+                    <input class="form-control", size=20, placeholder="City" th:field="*{durationOfDelivering}"/><br>
+                </div>
+                <div class="col-md-2.5">
                     <input list="deliveryType" class="form-control" placeholder="Delivery type" th:field="*{delivery_type}"/>
                     <datalist id="deliveryType">
                         <option>By car</option>
@@ -218,6 +234,14 @@
                 <div class="col-md-2.5">
                     <input class="form-control" placeholder="OrderId" th:field="*{id}"/>
                 </div>
+            </div>
+            <p><h5>Feedback from user:</h5></p>
+            <div class="form-row">
+                <input class="form-control", size=20, placeholder="Feedback" th:field="*{clientFeedback}"/><br>
+            </div>
+            <p><h5>Feedback from control operator:</h5></p>
+            <div class="form-row">
+                <input class="form-control", size=20, placeholder="Feedback" th:field="*{controlOperatorFeedback}"/><br>
             </div>
             <br>
 

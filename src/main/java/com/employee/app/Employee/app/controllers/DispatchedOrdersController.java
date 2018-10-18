@@ -6,6 +6,7 @@ import com.employee.app.Employee.app.service.DataClusterCommunication;
 import com.employee.app.Employee.app.service.daemons.OrdersToApproveQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,20 +26,18 @@ public class DispatchedOrdersController {
     }
 
     @GetMapping("/dispatched_orders")
-    public ModelAndView getDispatchedOrders(ModelAndView orderView){
-        List<Order> orders = ordersService.geDispatchedOrders();
-        orderView.addObject(orders);
-        orderView.setViewName("thymeleaf/orderList");
-        return orderView;
+    public String getDispatchedOrders(Model dispathedOrders){
+        List<DispatchedOrder> orders = ordersService.geDispatchedOrders();
+        dispathedOrders.addAttribute("orders", orders);
+        return "thymeleaf/orderList";
     }
 
 
     @GetMapping(value = "/dispatched_orders", params = {"id"})
-    public ModelAndView getOrderDetails(ModelAndView orderView, @RequestParam(value = "id") String id){
-        DispatchedOrder order = new DispatchedOrder();
-        orderView.addObject(order);
-        orderView.setViewName("thymeleaf/dispatchedOrderDetails");
-        return orderView;
+    public String getOrderDetails(Model order, @RequestParam(value = "id") String id){
+        DispatchedOrder dispatchedOrder =  ordersService.geDispatchedOrder(id);
+        order.addAttribute("order", dispatchedOrder);
+        return "thymeleaf/dispatchedOrderDetails";
     }
 
     @PostMapping(value = "/dispatched_orders")

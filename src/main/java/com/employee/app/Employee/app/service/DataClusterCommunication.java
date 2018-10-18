@@ -13,7 +13,9 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 @Component
 public class DataClusterCommunication {
@@ -60,11 +62,48 @@ public class DataClusterCommunication {
         return response.body();
     }
 
-    public List<Order> geDispatchedOrders(){
-        return new ArrayList<>();
+    public List<DispatchedOrder> geDispatchedOrders(){
+        List<DispatchedOrder> orders =  new ArrayList<>();
+        DispatchedOrder order1 = new DispatchedOrder();
+        order1.setId("1");
+        order1.setReceiver_city("Innopolis");
+        order1.setReceiver_country("Russia");
+        order1.setProfitValue(new BigDecimal(100));
+        order1.setProfitCurrency(Currency.getInstance("USD").getDisplayName());
+        DispatchedOrder order2 = new DispatchedOrder();
+        order2.setId("2");
+        order2.setReceiver_city("NY");
+        order2.setReceiver_country("USA");
+        order2.setProfitValue(new BigDecimal(1000000000));
+        order2.setProfitCurrency(Currency.getInstance("USD").getDisplayName());
+        orders.add(order1);
+        orders.add(order2);
+        return orders;
     }
 
     public DispatchedOrder geDispatchedOrder(String id){
-        return new DispatchedOrder();
+        if(id.equals("1")){
+            DispatchedOrder order1 = new DispatchedOrder();
+            order1.setId("1");
+            order1.setReceiver_city("Innopolis");
+            order1.setReceiver_country("Russia");
+            order1.setProfitValue(new BigDecimal(100));
+            order1.setProfitCurrency(Currency.getInstance("USD").getDisplayName());
+            order1.setClientFeedback("I got my parcel very fast. I'm happy!");
+            return order1;
+        } else if(id.equals("2")){
+            DispatchedOrder order2 = new DispatchedOrder();
+            order2.setId("2");
+            order2.setReceiver_city("NY");
+            order2.setReceiver_country("USA");
+            order2.setProfitValue(new BigDecimal(100000));
+            order2.setProfitCurrency(Currency.getInstance("USD").getDisplayName());
+            order2.setClientFeedback("I got my parcel very fast. I'm happy!");
+            return order2;
+        } else {
+            return new DispatchedOrder();
+        }
+
+
     }
 }

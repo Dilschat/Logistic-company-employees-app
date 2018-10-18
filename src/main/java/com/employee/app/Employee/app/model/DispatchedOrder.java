@@ -7,12 +7,13 @@ import java.util.Currency;
 public class DispatchedOrder extends Order {
     private Duration durationOfDelivering;
     private BigDecimal profitValue;
-    private Currency profitCurrency;
+    private String profitCurrency;
     private String clientFeedback;
+    private String controlOperatorFeedback;
 
     public DispatchedOrder(){};
 
-    public DispatchedOrder(Duration durationOfDelivering, BigDecimal profitValue, Currency profitCurrency, String clientFeedback) {
+    public DispatchedOrder(Duration durationOfDelivering, BigDecimal profitValue, String profitCurrency, String clientFeedback) {
         super();
         this.durationOfDelivering = durationOfDelivering;
         this.profitValue = profitValue;
@@ -36,11 +37,11 @@ public class DispatchedOrder extends Order {
         this.profitValue = profitValue;
     }
 
-    public Currency getProfitCurrency() {
+    public String getProfitCurrency() {
         return profitCurrency;
     }
 
-    public void setProfitCurrency(Currency profitCurrency) {
+    public void setProfitCurrency(String profitCurrency) {
         this.profitCurrency = profitCurrency;
     }
 
@@ -50,5 +51,13 @@ public class DispatchedOrder extends Order {
 
     public void setClientFeedback(String clientFeedback) {
         this.clientFeedback = clientFeedback;
+    }
+
+    public String getControlOperatorFeedback() {
+        return controlOperatorFeedback;
+    }
+
+    public void setControlOperatorFeedback(String controlOperatorFeedback) {
+        this.controlOperatorFeedback = controlOperatorFeedback;
     }
 }
