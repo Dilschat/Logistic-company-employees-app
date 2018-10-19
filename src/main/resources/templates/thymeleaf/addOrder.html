@@ -164,11 +164,22 @@
 
 
         <form action="#" th:action="@{/next_order}" th:object="${order}" method="post">
-
-             <p><h5>Information about customer:</h5></p>
+            <p><h6>Id</h6></p>
+            <div class="col-md-2.5">
+                <input class="form-control" placeholder="OrderId" th:field="*{id}"/>
+            </div>
+            <p><h6>Order status</h6></p>
+            <div class="col-md-2.5">
+                <input class="form-control" placeholder="Order status" th:field="*{orderStatus}"/>
+            </div>
+            <p><h6>Pickup type</h6></p>
+            <div class="col-md-2.5">
+                <input class="form-control" placeholder="Pickup type" th:field="*{pickupType}"/>
+            </div>
+             <p><h6>Information about customer:</h6></p>
             <div class="form-row">
               <div class="col-md-3">
-                <input class="form-control",size=20, placeholder="First Name" th:field="*{sender_firstname}"/>
+                <input class="form-control" placeholder="First Name" th:field="*{sender_firstname}"/>
               </div>
               <div class="col-md-3">
                 <input class="form-control",size=20, placeholder="Last Name" th:field="*{sender_lastname}"/>
@@ -207,18 +218,13 @@
                   <input class="form-control" type="number" placeholder="Package weight in kg" th:field="*{package_weight}"/>
                 </div>
                 <div class="col-md-2.5">
-                  <input list="deliveryType" class="form-control" placeholder="Delivery type" th:field="*{delivery_type}"/>
-                  <datalist id="deliveryType">
-                    <option>By car</option>
-                    <option>By ship</option>
-                    <option>By train</option>
-                  </datalist>
+                  <input class="form-control" placeholder="Delivery type" th:field="*{deliveryType}"/>
                 </div>
-                <div class="col-md-2.5">
-                  <input class="form-control" placeholder="OrderId" th:field="*{id}"/>
-                </div>
+                  <div class="col-md-2.5">
+                      <input class="form-control" placeholder="Attached notes" th:field="*{attachedNotes}"/>
+                  </div>
               </div>
-              <br>
+            <br>
 
 
             

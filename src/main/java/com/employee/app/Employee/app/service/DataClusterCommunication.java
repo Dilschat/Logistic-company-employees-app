@@ -113,7 +113,7 @@ public class DataClusterCommunication {
         return response.body();
     }
 
-    public List<Order> geDispatchedOrders(){
+    public List<DispatchedOrder> geDispatchedOrders(){
         return new ArrayList<>();
     }
 
