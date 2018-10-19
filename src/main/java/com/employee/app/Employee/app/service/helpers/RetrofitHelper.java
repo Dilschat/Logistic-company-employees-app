@@ -1,13 +1,9 @@
 package com.employee.app.Employee.app.service.helpers;
 
+import com.employee.app.Employee.app.model.Employee;
 import com.employee.app.Employee.app.model.Order;
 import com.employee.app.Employee.app.model.RequestError;
-import com.employee.app.Employee.app.service.interfaces.ApproveOrder;
-import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
-import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import com.employee.app.Employee.app.service.interfaces.*;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -15,9 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by niyaz on 30.09.2018.
  */
-@Component
 public class RetrofitHelper {
-
 
     private static final String BASE_URL = "http://localhost:5000";
 
@@ -36,6 +30,25 @@ public class RetrofitHelper {
         return retrofit.approveOrder(order);
     }
 
+    public static Call<RequestError> registerNewEmployee(Employee employee) {
+        RegisterNewEmployee retrofit = getRetrofit().create(RegisterNewEmployee.class);
+        return retrofit.registerNewEmployee(employee);
+    }
+
+    public static Call<GetEmployeesList.EmployeesList> getEmployeesList() {
+        GetEmployeesList retrofit = getRetrofit().create(GetEmployeesList.class);
+        return retrofit.getEmployeesList();
+    }
+
+    public static Call<RequestError> changeEmployeesAccessRights(String newLogin, String newRole) {
+        ChangeEmployeesAccessRight retrofit = getRetrofit().create(ChangeEmployeesAccessRight.class);
+        return retrofit.changeRights(newLogin, newRole);
+    }
+
+    public static Call<RequestError> deleteEmployee(String login) {
+        DeleteEmployee retrofit = getRetrofit().create(DeleteEmployee.class);
+        return retrofit.deleteEmployee(login);
+    }
     /**
      * @return configurated retrofit object
      */
@@ -45,5 +58,4 @@ public class RetrofitHelper {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
-
 }
