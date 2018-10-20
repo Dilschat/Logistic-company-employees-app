@@ -176,50 +176,67 @@
             <div class="col-md-2.5">
                 <input class="form-control" placeholder="Pickup type" th:field="*{pickupType}"/>
             </div>
-             <p><h6>Information about customer:</h6></p>
+            <p><h6>Delivery type</h6></p>
+            <div class="col-md-2.5">
+                <input class="form-control" placeholder="Delivery type" th:field="*{deliveryType}"/>
+            </div>
+             <p><h5>Information about sender:</h5></p>
+            <p><h6>Address:</h6></p>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="Country" th:field="*{sender.address.country}"/>
+                    <input class="form-control" placeholder="Street" th:field="*{sender.address.street}"/>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="Region" th:field="*{sender.address.region}"/>
+                    <input class="form-control" placeholder="Building" th:field="*{sender.address.building}"/>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="City" th:field="*{sender.address.city}"/>
+                    <input class="form-control" placeholder="Additional info" th:field="*{sender.address.additionalInfo}"/>
+                </div>
+            </div>
+            <p><h6>Sender personal info</h6></p>
             <div class="form-row">
               <div class="col-md-3">
-                <input class="form-control" placeholder="First Name" th:field="*{sender_firstname}"/>
+                <input class="form-control" placeholder="First Name" th:field="*{sender.name}"/>
               </div>
               <div class="col-md-3">
-                <input class="form-control",size=20, placeholder="Last Name" th:field="*{sender_lastname}"/>
+                <input class="form-control",size=20, placeholder="Last Name" th:field="*{sender.surname}"/>
               </div>
               <div class="col-md-3">
-                <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{sender_number}"/>
-              </div>
-              <div class="col-md-3">
-                <input class="form-control", size=20, placeholder="Receiver Number" th:field="*{receiver_number}"/>
+                <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{sender.phoneNumber}"/>
               </div>
             </div>
-            <br>
-              <p><h5>Delivery address:</h5></p>
-              <div class="form-row">
+            <p><h5>Information about receiver:</h5></p>
+            <p><h6>Address:</h6></p>
+            <div class="form-row">
                 <div class="col-md-3">
-                  <input class="form-control", size=20, placeholder="Country" th:field="*{sender_country}"/><br>
-                  <input class="form-control", size=20, placeholder="Region" th:field="*{sender_region}"/><br>
-                  <input type="number" class="form-control", size=20, placeholder="Building number" th:field="*{sender_building_number}"/>
+                    <input class="form-control" placeholder="Country" th:field="*{receiver.address.country}"/>
+                    <input class="form-control" placeholder="Street" th:field="*{receiver.address.street}"/>
                 </div>
                 <div class="col-md-3">
-                  <input class="form-control", size=20, placeholder="City" th:field="*{sender_city}"/><br>
-                  <input class="form-control", size=20, placeholder="Street" th:field="*{sender_street}"/><br>
+                    <input class="form-control" placeholder="Region" th:field="*{receiver.address.region}"/>
+                    <input class="form-control" placeholder="Building" th:field="*{receiver.address.building}"/>
                 </div>
-
-              </div>            
-              <br>
-               <p><h5>Package description:</h5></p>
-              <div class="form-row">
-                <div class="col-md-2.5">
-                 <input class="form-control" type="number" placeholder="Package height in cm" th:field="*{package_height}"/>
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="City" th:field="*{receiver.address.city}"/>
+                    <input class="form-control" placeholder="Additional info" th:field="*{receiver.address.additionalInfo}"/>
                 </div>
-                <div class="col-md-2.5">
-                 <input class="form-control" type="number" placeholder="Package length in cm" th:field="*{package_length}"/>
+            </div>
+            <p><h6>Sender personal info</h6></p>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="First Name" th:field="*{receiver.name}"/>
                 </div>
-                <div class="col-md-2.5">
-                  <input class="form-control" type="number" placeholder="Package weight in kg" th:field="*{package_weight}"/>
+                <div class="col-md-3">
+                    <input class="form-control",size=20, placeholder="Last Name" th:field="*{receiver.surname}"/>
                 </div>
-                <div class="col-md-2.5">
-                  <input class="form-control" placeholder="Delivery type" th:field="*{deliveryType}"/>
+                <div class="col-md-3">
+                    <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{receiver.phoneNumber}"/>
                 </div>
+            </div>
+             <div>
                   <div class="col-md-2.5">
                       <input class="form-control" placeholder="Attached notes" th:field="*{attachedNotes}"/>
                   </div>

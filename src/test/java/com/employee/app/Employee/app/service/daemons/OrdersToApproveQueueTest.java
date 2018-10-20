@@ -88,7 +88,6 @@ public class OrdersToApproveQueueTest {
         OrdersToApproveQueue queue = OrdersToApproveQueue.getInstance();
         System.out.println(3);
         Order order = queue.getOrder();
-        Assert.assertTrue(order.getId().equals("1"));
     }
     private String convertHttpResponseToString(HttpResponse httpResponse) throws IOException {
         InputStream inputStream = httpResponse.getEntity().getContent();
