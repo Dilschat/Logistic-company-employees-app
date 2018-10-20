@@ -2,7 +2,6 @@ package com.employee.app.Employee.app.model;
 
 import java.math.BigDecimal;
 import java.time.Duration;
-import java.util.Currency;
 
 public class DispatchedOrder extends Order {
     private Duration durationOfDelivering;
@@ -11,7 +10,7 @@ public class DispatchedOrder extends Order {
     private String clientFeedback;
     private String controlOperatorFeedback;
 
-    public DispatchedOrder(){};
+    public DispatchedOrder(){}
 
     public DispatchedOrder(Duration durationOfDelivering, BigDecimal profitValue, String profitCurrency, String clientFeedback) {
         super();
