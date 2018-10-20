@@ -11,6 +11,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 @Component
@@ -114,10 +115,39 @@ public class DataClusterCommunication {
     }
 
     public List<DispatchedOrder> geDispatchedOrders(){
-        return new ArrayList<>();
+        List<DispatchedOrder> a = new ArrayList<>();
+        DispatchedOrder f = new DispatchedOrder();
+        f.setId(1);
+        f.setOrderStatus("dfss");
+        OrdersToApproveRequest.Address ad = new OrdersToApproveRequest.Address();
+        OrdersToApproveRequest.Sender sender =  new OrdersToApproveRequest.Sender();
+        sender.setAddress(ad);
+        OrdersToApproveRequest.Receiver receiver =  new OrdersToApproveRequest.Receiver();
+        receiver.setAddress(ad);
+        f.setSender(sender);
+        f.setReceiver(receiver);
+        f.setProfitValue(new BigDecimal(1));
+        f.setProfitCurrency("USD");
+        a.add(f);
+        return a;
+
     }
 
     public DispatchedOrder geDispatchedOrder(String id){
-        return new DispatchedOrder();
+        DispatchedOrder f = new DispatchedOrder();
+        f.setId(1);
+        f.setOrderStatus("dfss");
+        OrdersToApproveRequest.Address ad = new OrdersToApproveRequest.Address();
+        OrdersToApproveRequest.Sender sender =  new OrdersToApproveRequest.Sender();
+        sender.setAddress(ad);
+        OrdersToApproveRequest.Receiver receiver =  new OrdersToApproveRequest.Receiver();
+        receiver.setAddress(ad);
+        f.setSender(sender);
+        f.setReceiver(receiver);
+        f.setProfitValue(new BigDecimal(1));
+        f.setProfitCurrency("USD");
+        return f;
+
+
     }
 }
