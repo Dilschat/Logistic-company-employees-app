@@ -29,6 +29,20 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" th:href="@{/main}">
+                    <i class="fas fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
+                <a class="nav-link" th:href="@{/dispatched_orders}">
+                    <i class="fa fa-fw fa-address-card"></i>
+                    <span class="nav-link-text">Orders</span>
+                </a>
+            </li>
+        </ul>
 
         </ul>
         <ul class="navbar-nav sidenav-toggler">
@@ -174,12 +188,11 @@
                 <label>
                     <select th:field="*{orderStatus}">
                         <option th:value="'Waiting validation'" th:text="'Waiting validation'"></option>
-                    </select>
-                    <select th:field="*{orderStatus}">
-                        <option th:value="'Waiting validation'" th:text="'Waiting validation'"></option>
+                        <option th:value="'Validated'" th:text="'Validated'"></option>
+                        <option th:value="'Delivering'" th:text="'Delivering'"></option>
+                        <option th:value="'Delivered'" th:text="'Delivered'"></option>
                     </select>
                 </label>
-
             </div>
             <p><h6>Pickup type</h6></p>
             <div class="col-md-2.5">

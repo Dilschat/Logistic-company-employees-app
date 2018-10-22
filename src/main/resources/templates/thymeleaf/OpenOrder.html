@@ -171,11 +171,13 @@
             <p><h6>Order status</h6></p>
             <div class="col-md-2.5">
                 <label>
-                    <select> th:field="*{orderStatus}">
-                        <option> th:value="Waiting validation" th:text:"Waiting validation":</option>
+                    <select th:field="*{orderStatus}">
+                        <option th:value="'ƒn'" th:text="'Waiting validation'"></option>
+                        <option th:value="'Validated'" th:text="'Validated'"></option>
+                        <option th:value="'Delivering'" th:text="'Delivering'"></option>
+                        <option th:value="'Delivered'" th:text="'Delivered'"></option>
                     </select>
                 </label>
-
             </div>
             <p><h6>Pickup type</h6></p>
             <div class="col-md-2.5">

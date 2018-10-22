@@ -35,7 +35,16 @@ public class DispatchedOrdersController {
     public String getOrderDetails(Model order, @RequestParam(value = "id") String id){
         DispatchedOrder dispatchedOrder =  ordersService.geDispatchedOrder(id);
         order.addAttribute("order", dispatchedOrder);
-        return "thymeleaf/dispatchedOrderDetails";
+        if(dispatchedOrder.getOrderStatus().equals("Validated")
+                || dispatchedOrder.getOrderStatus().equals("Delivering")) {
+            return "thymeleaf/dispatchedOrderDetails";
+        } else if(dispatchedOrder.getOrderStatus().equals("Waiting validation")) {
+            return "thymeleaf/openOrder";
+        } else if(dispatchedOrder.getOrderStatus().equals("Delivered")) {
+            return "thymeleaf/finalDispatchedOrder";
+        } else {
+            return "thymeleaf/error";
+        }
     }
 
     @PostMapping(value = "/dispatched_orders")

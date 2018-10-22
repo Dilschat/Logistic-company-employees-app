@@ -136,7 +136,7 @@ public class DataClusterCommunication {
     public DispatchedOrder geDispatchedOrder(String id){
         DispatchedOrder f = new DispatchedOrder();
         f.setId(1);
-        f.setOrderStatus("dfss");
+        f.setOrderStatus("Waiting validation");
         OrdersToApproveRequest.Address ad = new OrdersToApproveRequest.Address();
         OrdersToApproveRequest.Sender sender =  new OrdersToApproveRequest.Sender();
         sender.setAddress(ad);
