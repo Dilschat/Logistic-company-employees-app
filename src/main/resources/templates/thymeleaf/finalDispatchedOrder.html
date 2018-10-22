@@ -163,10 +163,11 @@
         <hr>
 
 
-        <form action="#" th:action="@{/next_order}" th:object="${order}" method="post">
+
+        <form action="#" th:action="@{/dispatched_orders}" th:object="${order}" method="post">
             <p><h6>Id</h6></p>
             <div class="col-md-2.5">
-                <input class="form-control" placeholder="OrderId" th:field="*{id}"/>
+                <input class="form-control" placeholder="OrderId" th:field="*{id}" readonly/>
             </div>
             <p><h6>Order status</h6></p>
             <div class="col-md-2.5">
@@ -178,77 +179,100 @@
             </div>
             <p><h6>Delivery type</h6></p>
             <div class="col-md-2.5">
-                <input class="form-control" placeholder="Delivery type" th:field="*{deliveryType}"/>
+                <input class="form-control" placeholder="Delivery type" th:field="*{deliveryType}" readonly/>
             </div>
-             <p><h5>Information about sender:</h5></p>
+            <p><h5>Information about sender:</h5></p>
             <p><h6>Address:</h6></p>
             <div class="form-row">
                 <div class="col-md-3">
-                    <input class="form-control" placeholder="Country" th:field="*{sender.address.country}"/>
-                    <input class="form-control" placeholder="Street" th:field="*{sender.address.street}"/>
+                    <input class="form-control" placeholder="Country" th:field="*{sender.address.country}" readonly/>
+                    <input class="form-control" placeholder="Street" th:field="*{sender.address.street}" readonly/>
                 </div>
                 <div class="col-md-3">
-                    <input class="form-control" placeholder="Region" th:field="*{sender.address.region}"/>
-                    <input class="form-control" placeholder="Building" th:field="*{sender.address.building}"/>
+                    <input class="form-control" placeholder="Region" th:field="*{sender.address.region}" readonly/>
+                    <input class="form-control" placeholder="Building" th:field="*{sender.address.building}" readonly/>
                 </div>
                 <div class="col-md-3">
                     <input class="form-control" placeholder="City" th:field="*{sender.address.city}"/>
-                    <input class="form-control" placeholder="Additional info" th:field="*{sender.address.additionalInfo}"/>
+                    <input class="form-control" placeholder="Additional info" th:field="*{sender.address.additionalInfo}" readonly/>
                 </div>
             </div>
             <p><h6>Sender personal info</h6></p>
             <div class="form-row">
-              <div class="col-md-3">
-                <input class="form-control" placeholder="First Name" th:field="*{sender.name}"/>
-              </div>
-              <div class="col-md-3">
-                <input class="form-control",size=20, placeholder="Last Name" th:field="*{sender.surname}"/>
-              </div>
-              <div class="col-md-3">
-                <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{sender.phoneNumber}"/>
-              </div>
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="First Name" th:field="*{sender.name}" readonly readonly/>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control",size=20, placeholder="Last Name" th:field="*{sender.surname}" readonly/>
+                </div>
+                <div class="col-md-3">
+                    <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{sender.phoneNumber}" readonly/>
+                </div>
             </div>
             <p><h5>Information about receiver:</h5></p>
             <p><h6>Address:</h6></p>
             <div class="form-row">
                 <div class="col-md-3">
-                    <input class="form-control" placeholder="Country" th:field="*{receiver.address.country}"/>
-                    <input class="form-control" placeholder="Street" th:field="*{receiver.address.street}"/>
+                    <input class="form-control" placeholder="Country" th:field="*{receiver.address.country}" readonly/>
+                    <input class="form-control" placeholder="Street" th:field="*{receiver.address.street}" readonly/>
                 </div>
                 <div class="col-md-3">
-                    <input class="form-control" placeholder="Region" th:field="*{receiver.address.region}"/>
-                    <input class="form-control" placeholder="Building" th:field="*{receiver.address.building}"/>
+                    <input class="form-control" placeholder="Region" th:field="*{receiver.address.region}" readonly/>
+                    <input class="form-control" placeholder="Building" th:field="*{receiver.address.building}" readonly/>
                 </div>
                 <div class="col-md-3">
-                    <input class="form-control" placeholder="City" th:field="*{receiver.address.city}"/>
-                    <input class="form-control" placeholder="Additional info" th:field="*{receiver.address.additionalInfo}"/>
+                    <input class="form-control" placeholder="City" th:field="*{receiver.address.city}" readonly/>
+                    <input class="form-control" placeholder="Additional info" th:field="*{receiver.address.additionalInfo}" readonly/>
                 </div>
             </div>
             <p><h6>Sender personal info</h6></p>
             <div class="form-row">
                 <div class="col-md-3">
-                    <input class="form-control" placeholder="First Name" th:field="*{receiver.name}"/>
+                    <input class="form-control" placeholder="First Name" th:field="*{receiver.name}" readonly/>
                 </div>
                 <div class="col-md-3">
-                    <input class="form-control",size=20, placeholder="Last Name" th:field="*{receiver.surname}"/>
+                    <input class="form-control",size=20, placeholder="Last Name" th:field="*{receiver.surname}" readonly/>
                 </div>
                 <div class="col-md-3">
-                    <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{receiver.phoneNumber}"/>
+                    <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{receiver.phoneNumber}" readonly/>
                 </div>
             </div>
-             <div>
-                  <div class="col-md-2.5">
-                      <input class="form-control" placeholder="Attached notes" th:field="*{attachedNotes}"/>
-                  </div>
-              </div>
+            <div>
+                <div class="col-md-2.5">
+                    <input class="form-control" placeholder="Attached notes" th:field="*{attachedNotes}" readonly/>
+                </div>
+            </div>
+            <br>
+            <p><h5>Delivery duration:</h5></p>
+            <div class="col-md-2.5">
+                <input class="form-control" placeholder="Delivery duration" th:field="*{durationOfDelivering}" readonly/>
+            </div>
+            <p><h5>Profit:</h5></p>
+            <div class="form-row">
+                <div class="col-md-2.5">
+                    <input class="form-control" placeholder="Profit value" th:field="*{profitValue}" readonly/>
+                </div>
+                <div class="col-md-2.5">
+                    <input class="form-control" placeholder="Currency" th:field="*{profitCurrency}" readonly/>
+                </div>
+
+            </div>
+            <p><h5>Feedback from user:</h5></p>
+            <div class="form-row">
+            <input class="form-control", size=20, placeholder="Feedback" th:field="*{clientFeedback}" readonly/><br>
+            </div>
+            <p><h5>Feedback from control operator:</h5></p>
+            <div class="form-row">
+            <input class="form-control", size=20, placeholder="Feedback" th:field="*{controlOperatorFeedback}"/><br>
+            </div>
             <br>
 
 
-            
-           <!-- footer -->
+
+            <!-- footer -->
             <div class="modal-footer">
-               <input class="btn btn-primary" type="submit" name = "action" value="Submit"/>
-               <input class="btn btn-primary" type="submit" name = "action" value="Cancel"/>
+                <input class="btn btn-primary" type="submit" name = "action" value="Submit"/>
+                <input class="btn btn-primary" type="submit" name = "action" value="Cancel"/>
             </div>
         </form>
 

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 public class OrdersController {
@@ -29,7 +28,7 @@ public class OrdersController {
     public ModelAndView nextOrder(ModelAndView orderView){
         Order order = ordersQueue.getOrder();
         orderView.addObject(order);
-        orderView.setViewName("thymeleaf/addOrder");
+        orderView.setViewName("thymeleaf/OpenOrder");
         return orderView;
     }
 
@@ -37,7 +36,7 @@ public class OrdersController {
     public ModelAndView addOrder(ModelAndView orderView){
         Order order = new Order();
         orderView.addObject(order);
-        orderView.setViewName("thymeleaf/addOrder");
+        orderView.setViewName("thymeleaf/OpenOrder");
         return orderView;
     }
 
