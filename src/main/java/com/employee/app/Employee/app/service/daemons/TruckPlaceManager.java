@@ -19,10 +19,12 @@ public class TruckPlaceManager implements Runnable{
     public TruckPlaceManager() {
         truck1 = new Pair<>(System.currentTimeMillis() / 3000, (long) 3000);
         truck2 = new Pair<>(System.currentTimeMillis() / 2500, (long) 2500);
+
     }
 
     @Override
     public void run() {
+        /*
         while(true){
             if (System.currentTimeMillis() / truck1.getValue() > truck1.getKey()){
                 truck1 = new Pair<>(System.currentTimeMillis() / 3000, (long) 3000);
@@ -37,5 +39,8 @@ public class TruckPlaceManager implements Runnable{
                 Thread.yield();
             }
         }
+        */
+
     }
+
 }

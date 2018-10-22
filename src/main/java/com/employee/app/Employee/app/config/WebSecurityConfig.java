@@ -24,11 +24,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
      @Autowired
      WebSecurityConfig(DataClusterUserDetailsService detailsService){
-         employeesDetailsService = detailsService;
+
+         //employeesDetailsService = detailsService;
      }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf().disable();
+         /*
         http
                 .userDetailsService(employeesDetailsService)
                 .authorizeRequests()
@@ -41,10 +45,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
+        */
     }
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/webjars/**","/css/**", "/js/**", "/thymeleaf/**");
+        //web.ignoring().antMatchers("/webjars/**","/css/**", "/js/**", "/thymeleaf/**");
     }
 
 
