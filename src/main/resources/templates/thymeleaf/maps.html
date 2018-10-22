@@ -1,25 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Transport Company</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-  <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'/>
-    <link rel='stylesheet' type='text/css' href='map.css'/>
-    <link rel='stylesheet' type='text/css' href='elements.css'/>
-    <script type='text/javascript' src='js/form.js'></script>
-    <script type='text/javascript' src='js/tomtom.min.js'></script>
+    <title>Transport Company</title>
+    <link rel="icon" type="image/png" th:href="@{truck.png}"/>
+    <!-- Bootstrap core CSS-->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"/>
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" type="text/css" th:href="@{css/sb-admin.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/custom.css}"/>
 
-  <link rel="icon" type="image/png" href="images/truck.png">
-  <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
   <style>
         #map { 
           position:absolute; 
@@ -250,82 +247,19 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<script>
-
-'use strict';
-mapboxgl.accessToken = 'pk.eyJ1IjoidmljYXJvIiwiYSI6ImNqbmlxeGp2czBycGIzcW9zYmFheWZnbnMifQ.cisqDTqvlS5vIoJueqTIGg';
-var map = new mapboxgl.Map({
-              container: 'map',
-              style: 'mapbox://styles/mapbox/streets-v9',
-              zoom: 2
-            });
-
-var socket = new SockJS('/ws');
-var stompClient = Stomp.over(socket);
-
-stompClient.connect({}, onConnected, onError);
-event.preventDefault();
-
-
-function onConnected() {
-        // Subscribe to the Public Topic
-    stompClient.subscribe('/topic/public', onMessageReceived);
-}
-
-function onError(error) {
-    console.log('Could not connect to WebSocket server.');
-}
-
-
-function onMessageReceived(payload) {
-
-    var truck = JSON.parse(payload.body);
-    map.addLayer({
-        "id": truck.id,
-        "type": "symbol",
-        "source": {
-            "type": "geojson",
-            "data": {
-                "type": "FeatureCollection",
-                "features": [
-                    {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [truck.longitude, truck.latitude]
-                    },
-                        "properties": {
-                            "title": truck.id,
-                            "icon": "car"
-                        }
-                    }
-                ]
-            }
-        },
-        "layout": {
-            "icon-image": "{icon}-15",
-            "text-field": "{title}",
-            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-            "text-offset": [0, 0.6],
-            "text-anchor": "top"
-        }
-        }
-    );
-}
-
-    </script>
+<script src="../js/map.js"></script>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
-    <!-- Custom scripts for this page-->
-    <script src="js/sb-admin-charts.js"></script>
+<script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.bundle.min.js}"></script>
+<!-- Core plugin JavaScript-->
+<script th:src="@{/webjars/jquery-easing/1.3/jquery.easing.min.js}"></script>
+<!-- Page level plugin JavaScript-->
+
+<!-- Custom scripts for all pages-->
+<script th:src="@{js/sb-admin.min.js}"></script>
+<!-- Custom scripts for this page-->
+
   </div>
 </body>
 

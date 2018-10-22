@@ -1,14 +1,10 @@
 package com.employee.app.Employee.app.controllers;
 
-import com.employee.app.Employee.app.model.Truck;
 import com.employee.app.Employee.app.model.TrucksLocation;
-import com.employee.app.Employee.app.service.singletones.TruckSingleton;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.ArrayList;
 
 @Controller
 public class MapController {

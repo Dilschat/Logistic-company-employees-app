@@ -1,6 +1,7 @@
 package com.employee.app.Employee.app.service.singletones;
 
 import com.employee.app.Employee.app.model.Truck;
+
 import java.util.ArrayList;
 
 public class TruckSingleton {

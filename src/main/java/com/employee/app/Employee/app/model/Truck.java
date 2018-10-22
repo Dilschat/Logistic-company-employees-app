@@ -1,31 +1,42 @@
 package com.employee.app.Employee.app.model;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.ObjectCodec;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-/**
- * Created by niyaz on 21.10.2018.
- */
-@JsonDeserialize(using = Truck.TruckDeserializer.class)
+
+@JsonInclude
+@JsonPropertyOrder({"id","longitude", "latitude", "type" })
 public class Truck {
 
     private long id;
     private double longitude, latitude;
     private final String type = "truck";
 
+    public Truck(){}
     public Truck(long id, double x, double y) {
         this.id = id;
         this.longitude = x;
         this.latitude = y;
+
     }
 
+    @JsonCreator
+    public static Truck build(
+        @JsonProperty("id") long id,
+        @JsonProperty("longitude") double longitude,
+        @JsonProperty("latitude") double latitude,
+        @JsonProperty("type") String type
+    ){
+        Truck truck = new Truck();
+        truck.setId(id);
+        truck.setLatitude(latitude);
+        truck.setLongitude(longitude);
+        return truck;
+    }
+    @JsonProperty("id")
     public long getId() {
         return id;
     }
@@ -33,7 +44,7 @@ public class Truck {
     public void setId(long id) {
         this.id = id;
     }
-
+    @JsonProperty("longitude")
     public double getLongitude() {
         return longitude;
     }
@@ -41,7 +52,7 @@ public class Truck {
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
-
+    @JsonProperty("latitude")
     public double getLatitude() {
         return latitude;
     }
@@ -49,18 +60,9 @@ public class Truck {
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
-
-
-    public class TruckDeserializer extends StdDeserializer<Truck> {
-        protected TruckDeserializer(Class<?> vc) {
-            super(vc);
-        }
-
-        @Override
-        public Truck deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
-            ObjectCodec oc = jsonParser.getCodec();
-            JsonNode node = oc.readTree(jsonParser);
-            return new Truck(node.get("id").asLong(), node.get("longitude").asDouble(), node.get("latitude").asDouble());
-        }
+    @JsonProperty("type")
+    public String getType(){
+        return type;
     }
 }
+
