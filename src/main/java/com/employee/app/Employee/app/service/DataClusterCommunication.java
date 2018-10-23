@@ -3,15 +3,12 @@ package com.employee.app.Employee.app.service;
 
 import com.employee.app.Employee.app.model.*;
 import com.employee.app.Employee.app.service.helpers.RetrofitHelper;
-import com.employee.app.Employee.app.service.interfaces.GetEmployeesList;
-import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
-import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
+import com.employee.app.Employee.app.service.interfaces.*;
 import org.springframework.stereotype.Component;
 import retrofit2.Call;
 import retrofit2.Response;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 @Component
@@ -28,6 +25,15 @@ public class DataClusterCommunication {
         Response<UserByLoginRequest.UserInfo> response = call.execute();
 
         LoginResponse result = new LoginResponse(login, response.body().getPassword(),
+                response.body().getRole(), response.body().getError());
+        return result;
+    }
+
+    public static LoginResponse login(LoginRequest login) throws IOException {
+        Call<Login.UserInfo> call = RetrofitHelper.login(login);
+        Response<Login.UserInfo> response = call.execute();
+
+        LoginResponse result = new LoginResponse(login.getLogin(), login.getPassword_hash(),
                 response.body().getRole(), response.body().getError());
         return result;
     }
@@ -114,39 +120,23 @@ public class DataClusterCommunication {
         return response.body();
     }
 
-    public List<DispatchedOrder> geDispatchedOrders(){
-        List<DispatchedOrder> a = new ArrayList<>();
-        DispatchedOrder f = new DispatchedOrder();
-        f.setId(1);
-        f.setOrderStatus("dfss");
-        OrdersToApproveRequest.Address ad = new OrdersToApproveRequest.Address();
-        OrdersToApproveRequest.Sender sender =  new OrdersToApproveRequest.Sender();
-        sender.setAddress(ad);
-        OrdersToApproveRequest.Receiver receiver =  new OrdersToApproveRequest.Receiver();
-        receiver.setAddress(ad);
-        f.setSender(sender);
-        f.setReceiver(receiver);
-        f.setProfitValue(new BigDecimal(1));
-        f.setProfitCurrency("USD");
-        a.add(f);
-        return a;
+    public List<DispatchedOrder> geDispatchedOrders() throws IOException {
+        Call<GetDispatchedOrders.OrderList>  call = RetrofitHelper.getOrders();
+
+        Response<GetDispatchedOrders.OrderList> response = call.execute();
+        List<DispatchedOrder> orders = response.body().getOrders();
+        if(orders == null){
+            orders = new ArrayList<>();
+        }
+        return orders;
 
     }
 
-    public DispatchedOrder geDispatchedOrder(String id){
-        DispatchedOrder f = new DispatchedOrder();
-        f.setId(1);
-        f.setOrderStatus("Waiting validation");
-        OrdersToApproveRequest.Address ad = new OrdersToApproveRequest.Address();
-        OrdersToApproveRequest.Sender sender =  new OrdersToApproveRequest.Sender();
-        sender.setAddress(ad);
-        OrdersToApproveRequest.Receiver receiver =  new OrdersToApproveRequest.Receiver();
-        receiver.setAddress(ad);
-        f.setSender(sender);
-        f.setReceiver(receiver);
-        f.setProfitValue(new BigDecimal(1));
-        f.setProfitCurrency("USD");
-        return f;
+    public DispatchedOrder geDispatchedOrder(Integer id) throws IOException {
+        Call<getDispatchedOrder.Order>  call = RetrofitHelper.getOrder(id);
+        Response<getDispatchedOrder.Order> response = call.execute();
+        return response.body().getOrders();
+
 
 
     }

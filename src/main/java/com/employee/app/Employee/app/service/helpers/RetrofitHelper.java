@@ -1,6 +1,7 @@
 package com.employee.app.Employee.app.service.helpers;
 
 import com.employee.app.Employee.app.model.Employee;
+import com.employee.app.Employee.app.model.LoginRequest;
 import com.employee.app.Employee.app.model.Order;
 import com.employee.app.Employee.app.model.RequestError;
 import com.employee.app.Employee.app.service.interfaces.*;
@@ -20,6 +21,11 @@ public class RetrofitHelper {
         return retrofit.userByLogin(login);
     }
 
+    public static Call<Login.UserInfo> login(LoginRequest login){
+        Login retrofit = getRetrofit().create(Login.class);
+        return retrofit.userByLogin(login);
+    }
+
     public static Call<OrdersToApproveRequest.OrdersToApproveResponse> ordersToApprove(){
         OrdersToApproveRequest retrofit = getRetrofit().create(OrdersToApproveRequest.class);
         return retrofit.ordersToApprove();
@@ -35,11 +41,20 @@ public class RetrofitHelper {
         return retrofit.registerNewEmployee(employee);
     }
 
+    public static Call<getDispatchedOrder.Order> getOrder(Integer id){
+        getDispatchedOrder retrofit = getRetrofit().create(getDispatchedOrder.class);
+        return retrofit.getOrder(id);
+    }
     public static Call<GetEmployeesList.EmployeesList> getEmployeesList() {
         GetEmployeesList retrofit = getRetrofit().create(GetEmployeesList.class);
         return retrofit.getEmployeesList();
     }
 
+    public static Call<GetDispatchedOrders.OrderList> getOrders(){
+        GetDispatchedOrders retrofit = getRetrofit().create(GetDispatchedOrders.class);
+        return retrofit.getOrders();
+
+    }
     public static Call<RequestError> changeEmployeesAccessRights(String newLogin, String newRole) {
         ChangeEmployeesAccessRight retrofit = getRetrofit().create(ChangeEmployeesAccessRight.class);
         return retrofit.changeRights(newLogin, newRole);
@@ -49,6 +64,8 @@ public class RetrofitHelper {
         DeleteEmployee retrofit = getRetrofit().create(DeleteEmployee.class);
         return retrofit.deleteEmployee(login);
     }
+
+
     /**
      * @return configurated retrofit object
      */

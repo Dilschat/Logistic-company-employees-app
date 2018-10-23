@@ -24,7 +24,7 @@ public class DispatchedOrdersController {
     }
 
     @GetMapping("/dispatched_orders")
-    public String getDispatchedOrders(Model dispathedOrders){
+    public String getDispatchedOrders(Model dispathedOrders) throws IOException {
         List<DispatchedOrder> orders = ordersService.geDispatchedOrders();
         dispathedOrders.addAttribute("orders", orders);
         return "thymeleaf/orderList";
@@ -32,8 +32,8 @@ public class DispatchedOrdersController {
 
 
     @GetMapping(value = "/dispatched_orders", params = {"id"})
-    public String getOrderDetails(Model order, @RequestParam(value = "id") String id){
-        DispatchedOrder dispatchedOrder =  ordersService.geDispatchedOrder(id);
+    public String getOrderDetails(Model order, @RequestParam(value = "id") String id) throws IOException {
+        DispatchedOrder dispatchedOrder =  ordersService.geDispatchedOrder(Integer.getInteger(id));
         order.addAttribute("order", dispatchedOrder);
         if(dispatchedOrder.getOrderStatus().equals("Validated")
                 || dispatchedOrder.getOrderStatus().equals("Delivering")) {
