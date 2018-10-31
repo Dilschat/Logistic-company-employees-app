@@ -18,15 +18,4 @@ public class MapController {
 
         return new TrucksLocation();
     }
-
-    /*
-    @GetMapping("/map")
-    public ArrayList<Truck> getAllTrucks(){
-        AbstractAuthenticationToken auth = (AbstractAuthenticationToken)
-                SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
-        TruckSingleton truckSingleton = TruckSingleton.getInstance();
-        return truckSingleton.getTrucks();
-    }
-    */
 }

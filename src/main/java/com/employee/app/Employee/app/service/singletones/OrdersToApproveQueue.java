@@ -1,16 +1,10 @@
-package com.employee.app.Employee.app.service.daemons;
+package com.employee.app.Employee.app.service.singletones;
 
 import com.employee.app.Employee.app.model.Order;
-import com.employee.app.Employee.app.service.helpers.DateHelper;
 import org.springframework.stereotype.Component;
 
-import java.text.ParseException;
 import java.util.*;
 import java.util.concurrent.PriorityBlockingQueue;
-
-/**
- * Created by niyaz on 06.10.2018.
- */
 
 @Component
 public class OrdersToApproveQueue {

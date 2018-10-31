@@ -13,7 +13,6 @@ stompClient.connect({}, onConnected, onError);
 
 
 function onConnected() {
-        // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
 }
 
@@ -34,29 +33,29 @@ function onMessageReceived(payload) {
         map.removeLayer(truck.id.toString());
         map.removeSource(truck.id.toString());
     }
-        map.addLayer({
-            "id":  truck.id.toString(),
-            "type": "symbol",
-            "source": {
-                "type": "geojson",
-                "data": {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [truck.longitude, truck.latitude]
-                    },
-                    "properties": {
-                        "title": truck.id.toString(),
-                        "icon": "car"
-                    }
-                }
+    map.addLayer({
+    "id":  truck.id.toString(),
+        "type": "symbol",
+        "source": {
+        "type": "geojson",
+        "data": {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [truck.longitude, truck.latitude]
             },
-            "layout": {
-                "icon-image": "{icon}-15",
-                "text-field": "{title}",
-                "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-                "text-offset": [0, 0.6],
-                "text-anchor": "top"
+                "properties": {
+                    "title": truck.id.toString(),
+                    "icon": "car"
+                }
             }
-        });
+        },
+        "layout": {
+            "icon-image": "{icon}-15",
+            "text-field": "{title}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-offset": [0, 0.6],
+            "text-anchor": "top"
+        }
+    });
 }

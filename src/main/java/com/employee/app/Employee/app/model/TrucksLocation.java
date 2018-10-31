@@ -4,9 +4,6 @@ import com.employee.app.Employee.app.service.singletones.TruckSingleton;
 
 import java.util.ArrayList;
 
-/**
- * Created by niyaz on 21.10.2018.
- */
 public class TrucksLocation {
 
     private final String type = "truck_locations";
