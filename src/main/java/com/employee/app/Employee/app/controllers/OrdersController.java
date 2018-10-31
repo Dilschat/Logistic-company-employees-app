@@ -4,6 +4,7 @@ import com.employee.app.Employee.app.service.DataClusterCommunication;
 import com.employee.app.Employee.app.service.daemons.OrdersToApproveQueue;
 import com.employee.app.Employee.app.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 
+
+@PreAuthorize("hasRole('orderOperator')")
 @Controller
 public class OrdersController {
 
@@ -23,14 +26,17 @@ public class OrdersController {
         this.ordersQueue = ordersQueue;
     }
 
+    @PreAuthorize("hasRole('orderOperator')")
 
     @GetMapping("/next_order")
     public ModelAndView nextOrder(ModelAndView orderView){
-        Order order = ordersQueue.getOrder();
+ //       Order order = ordersQueue.getOrder();
+        Order order = new Order();
         orderView.addObject(order);
         orderView.setViewName("thymeleaf/OpenOrder");
         return orderView;
     }
+    @PreAuthorize("hasRole('orderOperator')")
 
     @GetMapping("/add_order")
     public ModelAndView addOrder(ModelAndView orderView){
@@ -40,6 +46,7 @@ public class OrdersController {
         return orderView;
     }
 
+    @PreAuthorize("hasRole('orderOperator')")
 
     @PostMapping("/next_order")
     public String submitOrder(@ModelAttribute Order order, @RequestParam(value="action", required=true) String action) throws IOException {

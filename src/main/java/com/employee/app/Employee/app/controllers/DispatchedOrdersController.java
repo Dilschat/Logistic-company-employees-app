@@ -4,6 +4,7 @@ import com.employee.app.Employee.app.model.DispatchedOrder;
 import com.employee.app.Employee.app.model.Order;
 import com.employee.app.Employee.app.service.DataClusterCommunication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.IOException;
 import java.util.List;
 
+@PreAuthorize("hasRole('controlOperator')")
 @Controller
 public class DispatchedOrdersController {
     private final DataClusterCommunication ordersService;
@@ -22,6 +24,7 @@ public class DispatchedOrdersController {
     public DispatchedOrdersController(DataClusterCommunication ordersService) {
         this.ordersService = ordersService;
     }
+
 
     @GetMapping("/dispatched_orders")
     public String getDispatchedOrders(Model dispathedOrders) throws IOException {

@@ -21,12 +21,12 @@ public class DataClusterCommunication {
      * @throws IOException sometimes(((
      */
     public static LoginResponse userByLogin(String login) throws IOException {
-        Call<UserByLoginRequest.UserInfo> call = RetrofitHelper.userByLogin(login);
-        Response<UserByLoginRequest.UserInfo> response = call.execute();
-
-        LoginResponse result = new LoginResponse(login, response.body().getPassword(),
-                response.body().getRole(), response.body().getError());
-        return result;
+//        Call<UserByLoginRequest.UserInfo> call = RetrofitHelper.userByLogin(login);
+//        Response<UserByLoginRequest.UserInfo> response = call.execute();
+//
+//        LoginResponse result = new LoginResponse(login, response.body().getPassword(),
+//                response.body().getRole(), response.body().getError());
+        return new LoginResponse(login, "password","control operator", null);
     }
 
     public static LoginResponse login(LoginRequest login) throws IOException {
@@ -136,7 +136,6 @@ public class DataClusterCommunication {
         Call<getDispatchedOrder.Order>  call = RetrofitHelper.getOrder(id);
         Response<getDispatchedOrder.Order> response = call.execute();
         return response.body().getOrders();
-
 
 
     }
