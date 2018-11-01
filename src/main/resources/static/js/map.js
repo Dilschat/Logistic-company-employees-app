@@ -13,7 +13,7 @@ stompClient.connect({}, onConnected, onError);
 
 
 function onConnected() {
-    stompClient.subscribe('/topic/public', onMessageReceived);
+    stompClient.subscribe('/user/queue/reply', onMessageReceived);
 }
 
 function onError(error) {

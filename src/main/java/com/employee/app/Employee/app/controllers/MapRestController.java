@@ -19,7 +19,6 @@ public class MapRestController {
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void post(@RequestBody Truck truck){
-        System.out.println(truck.getId());
-        messagingTemplate.convertAndSend("/topic/public", truck);
+        messagingTemplate.convertAndSendToUser(truck.getUsername(),"/queue/reply", truck);
     }
 }
