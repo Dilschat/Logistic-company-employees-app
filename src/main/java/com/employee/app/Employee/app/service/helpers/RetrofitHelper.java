@@ -8,9 +8,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by niyaz on 30.09.2018.
- */
+
 public class RetrofitHelper {
 
     private static final String BASE_URL = "http://localhost:5000";

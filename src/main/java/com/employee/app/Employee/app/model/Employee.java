@@ -3,9 +3,6 @@ package com.employee.app.Employee.app.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by niyaz on 17.10.2018.
- */
 public class Employee {
 
     @SerializedName("login")

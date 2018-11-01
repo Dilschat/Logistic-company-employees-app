@@ -1,8 +1,8 @@
 package com.employee.app.Employee.app.controllers;
 
-import com.employee.app.Employee.app.service.DataClusterCommunication;
-import com.employee.app.Employee.app.service.daemons.OrdersToApproveQueue;
 import com.employee.app.Employee.app.model.Order;
+import com.employee.app.Employee.app.service.DataClusterCommunication;
+import com.employee.app.Employee.app.service.singletones.OrdersToApproveQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 public class OrdersController {
