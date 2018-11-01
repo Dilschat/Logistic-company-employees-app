@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @RestController
 @ExposesResourceFor(Truck.class)
 @RequestMapping("/update_position")
@@ -22,6 +24,14 @@ public class MapRestController {
     public void post(@RequestBody Truck truck){
         TruckSingleton singleton = TruckSingleton.getInstance();
         singleton.addTruck(truck);
-        messagingTemplate.convertAndSendToUser(truck.getUsername(),"/queue/reply", truck);
+
+        HashMap<String, Object> res = new HashMap<>(4);
+        res.put("type", "truck");
+        res.put("id", truck.getId());
+        res.put("latitude", truck.getLatitude());
+        res.put("longitude", truck.getLongitude());
+
+
+        messagingTemplate.convertAndSendToUser(truck.getUsername(),"/queue/reply", res);
     }
 }
