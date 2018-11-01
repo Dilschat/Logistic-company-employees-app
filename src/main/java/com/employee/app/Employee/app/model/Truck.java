@@ -13,7 +13,6 @@ public class Truck {
 
     private long id;
     private double longitude, latitude;
-    private final String type = "truck";
     private String username;
 
     public Truck(){}
@@ -29,7 +28,6 @@ public class Truck {
         @JsonProperty("id") long id,
         @JsonProperty("longitude") double longitude,
         @JsonProperty("latitude") double latitude,
-        @JsonProperty("type") String type,
         @JsonProperty("username") String username
     ){
         Truck truck = new Truck();
@@ -47,6 +45,7 @@ public class Truck {
     public void setId(long id) {
         this.id = id;
     }
+
     @JsonProperty("longitude")
     public double getLongitude() {
         return longitude;
@@ -55,6 +54,7 @@ public class Truck {
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
+
     @JsonProperty("latitude")
     public double getLatitude() {
         return latitude;
@@ -63,10 +63,7 @@ public class Truck {
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
-    @JsonProperty("type")
-    public String getType(){
-        return type;
-    }
+
     @JsonProperty("username")
     public String getUsername() {
         return username;

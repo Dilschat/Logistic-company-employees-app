@@ -41,7 +41,7 @@ public class OrdersToApproveManager {
                                 }
                             }
                         }
-                        wait(5000);
+                        wait(20000);
                     } catch (InterruptedException e) {
                         e.printStackTrace(); // shouldn't happen "WHAT ARE YOU DOING IN MY SWAMP?"
                     } catch (IOException e) {

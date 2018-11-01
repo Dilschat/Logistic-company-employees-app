@@ -47,6 +47,12 @@ public class RetrofitHelper {
         DeleteEmployee retrofit = getRetrofit().create(DeleteEmployee.class);
         return retrofit.deleteEmployee(login);
     }
+
+    public static Call<GetWarehouses.WarehousesResponse> getWarehousesList() {
+        GetWarehouses retrofit = getRetrofit().create(GetWarehouses.class);
+        return retrofit.getWarehousesList();
+    }
+
     /**
      * @return configurated retrofit object
      */

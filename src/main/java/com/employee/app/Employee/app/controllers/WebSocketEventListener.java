@@ -1,6 +1,7 @@
 package com.employee.app.Employee.app.controllers;
 
 import com.employee.app.Employee.app.model.TrucksLocation;
+import com.employee.app.Employee.app.service.singletones.TruckSingleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
+
+import java.util.HashMap;
 
 @Component
 public class WebSocketEventListener {
@@ -20,6 +23,13 @@ public class WebSocketEventListener {
     @EventListener
     public void handleWebSocketConnectListener(SessionConnectedEvent event) {
         logger.info("Received a new web socket connection");
-        messagingTemplate.convertAndSend("/topic/public", new TrucksLocation());
+        /*
+        if (event.getUser() != null && event.getUser().getName() != null){
+            HashMap<String, Object> res = new HashMap<>(2);
+            res.put("type", "trucks_list");
+            res.put("list", TruckSingleton.getInstance().getTrucks(event.getUser().getName()));
+            messagingTemplate.convertAndSendToUser(event.getUser().getName(), "/queue/reply", res);
+        }*/
+
     }
 }

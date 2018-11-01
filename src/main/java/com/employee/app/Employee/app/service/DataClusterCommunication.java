@@ -5,6 +5,7 @@ import com.employee.app.Employee.app.model.*;
 import com.employee.app.Employee.app.service.helpers.RetrofitHelper;
 import com.employee.app.Employee.app.service.helpers.RolesHelper;
 import com.employee.app.Employee.app.service.interfaces.GetEmployeesList;
+import com.employee.app.Employee.app.service.interfaces.GetWarehouses;
 import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
 import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
 import org.springframework.stereotype.Component;
@@ -118,6 +119,23 @@ public class DataClusterCommunication {
         Response<RequestError> response =
                 call.execute();
         return response.body();
+    }
+
+    /**
+     * API request to data cluster for getting list of all warehouses in the system
+     * @return object with error or list of employees
+     * @throws IOException
+     */
+    public static List<Warehouse> getWarehousesList() throws IOException {
+        Call<GetWarehouses.WarehousesResponse> call = RetrofitHelper.getWarehousesList();
+
+        Response<GetWarehouses.WarehousesResponse> response =
+                call.execute();
+        if (response.body() != null &&
+                ( response.body().getError().equals("none") || response.body().getError().length() == 0)) {
+            return response.body().getWarehouses();
+        }
+        return null;
     }
 
     public List<DispatchedOrder> geDispatchedOrders(){
