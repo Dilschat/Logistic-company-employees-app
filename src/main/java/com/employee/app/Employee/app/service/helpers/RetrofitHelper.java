@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
 
-    private static final String BASE_URL = "http://localhost:5000";
+    private static final String BASE_URL = "http://10.90.138.37:5000";
 
     public static Call<UserByLoginRequest.UserInfo> userByLogin(String login){
         UserByLoginRequest retrofit = getRetrofit().create(UserByLoginRequest.class);

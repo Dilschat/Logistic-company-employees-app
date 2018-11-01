@@ -15,6 +15,7 @@ public class MapController {
         AbstractAuthenticationToken auth = (AbstractAuthenticationToken)
                 SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
+        System.out.println(name);
 
         return new TrucksLocation();
     }

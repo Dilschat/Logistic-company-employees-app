@@ -3,6 +3,7 @@ package com.employee.app.Employee.app.service;
 
 import com.employee.app.Employee.app.model.*;
 import com.employee.app.Employee.app.service.helpers.RetrofitHelper;
+import com.employee.app.Employee.app.service.helpers.RolesHelper;
 import com.employee.app.Employee.app.service.interfaces.GetEmployeesList;
 import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
 import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
@@ -27,9 +28,14 @@ public class DataClusterCommunication {
         Call<UserByLoginRequest.UserInfo> call = RetrofitHelper.userByLogin(login);
         Response<UserByLoginRequest.UserInfo> response = call.execute();
 
-        LoginResponse result = new LoginResponse(login, response.body().getPassword(),
-                response.body().getRole(), response.body().getError());
-        return result;
+        if(response.body() != null) {
+            System.out.println(response.body().getPasswordHash());
+            LoginResponse result = new LoginResponse(login, response.body().getPasswordHash(),
+                    RolesHelper.RoleIdToString(response.body().getAccessRightsId()),
+                    response.body().getError());
+            return result;
+        }
+        return new LoginResponse(login, "", "", "");
     }
 
     /**
@@ -114,7 +120,7 @@ public class DataClusterCommunication {
         return response.body();
     }
 
-    public List<Order> geDispatchedOrders(){
+    public List<DispatchedOrder> geDispatchedOrders(){
         return new ArrayList<>();
     }
 
