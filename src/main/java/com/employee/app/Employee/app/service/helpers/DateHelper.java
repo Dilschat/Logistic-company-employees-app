@@ -4,9 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by niyaz on 06.10.2018.
- */
 public class DateHelper {
 
     public final static String DATE_FORMAT = "yyyyMMdd'T'HHmmss";

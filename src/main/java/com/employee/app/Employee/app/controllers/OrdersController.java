@@ -1,8 +1,8 @@
 package com.employee.app.Employee.app.controllers;
 
-import com.employee.app.Employee.app.service.DataClusterCommunication;
-import com.employee.app.Employee.app.service.daemons.OrdersToApproveQueue;
 import com.employee.app.Employee.app.model.Order;
+import com.employee.app.Employee.app.service.DataClusterCommunication;
+import com.employee.app.Employee.app.service.singletones.OrdersToApproveQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

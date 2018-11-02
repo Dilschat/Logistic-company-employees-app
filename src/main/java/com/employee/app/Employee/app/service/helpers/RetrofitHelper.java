@@ -9,20 +9,13 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by niyaz on 30.09.2018.
- */
+
 public class RetrofitHelper {
 
-    private static final String BASE_URL = "http://127.0.0.1:5000";
+    private static final String BASE_URL = "http://10.90.138.37:5000";
 
     public static Call<UserByLoginRequest.UserInfo> userByLogin(String login){
         UserByLoginRequest retrofit = getRetrofit().create(UserByLoginRequest.class);
-        return retrofit.userByLogin(login);
-    }
-
-    public static Call<Login.UserInfo> login(LoginRequest login){
-        Login retrofit = getRetrofit().create(Login.class);
         return retrofit.userByLogin(login);
     }
 
@@ -65,6 +58,12 @@ public class RetrofitHelper {
         return retrofit.deleteEmployee(login);
     }
 
+
+
+    public static Call<GetWarehouses.WarehousesResponse> getWarehousesList() {
+        GetWarehouses retrofit = getRetrofit().create(GetWarehouses.class);
+        return retrofit.getWarehousesList();
+    }
 
     /**
      * @return configurated retrofit object

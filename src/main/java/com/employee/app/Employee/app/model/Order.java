@@ -1,18 +1,13 @@
 package com.employee.app.Employee.app.model;
 
 
-import com.employee.app.Employee.app.service.helpers.DateHelper;
 import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.text.ParseException;
 import java.util.Comparator;
-import java.util.Date;
 
-/**
- * Created by niyaz on 06.10.2018.
- */public class Order {
+public class Order {
 
     @SerializedName("attached_notes")
     @Expose

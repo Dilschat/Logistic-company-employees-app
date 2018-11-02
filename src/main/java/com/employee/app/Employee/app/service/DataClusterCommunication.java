@@ -3,6 +3,11 @@ package com.employee.app.Employee.app.service;
 
 import com.employee.app.Employee.app.model.*;
 import com.employee.app.Employee.app.service.helpers.RetrofitHelper;
+import com.employee.app.Employee.app.service.helpers.RolesHelper;
+import com.employee.app.Employee.app.service.interfaces.GetEmployeesList;
+import com.employee.app.Employee.app.service.interfaces.GetWarehouses;
+import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
+import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
 import com.employee.app.Employee.app.service.interfaces.*;
 import org.springframework.stereotype.Component;
 import retrofit2.Call;
@@ -11,6 +16,7 @@ import retrofit2.Response;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
 public class DataClusterCommunication {
 
@@ -21,21 +27,17 @@ public class DataClusterCommunication {
      * @throws IOException sometimes(((
      */
     public static LoginResponse userByLogin(String login) throws IOException {
-//        Call<UserByLoginRequest.UserInfo> call = RetrofitHelper.userByLogin(login);
-//        Response<UserByLoginRequest.UserInfo> response = call.execute();
-//
-//        LoginResponse result = new LoginResponse(login, response.body().getPassword(),
-//                response.body().getRole(), response.body().getError());
-        return new LoginResponse(login, "password","control operator", null);
-    }
+        Call<UserByLoginRequest.UserInfo> call = RetrofitHelper.userByLogin(login);
+        Response<UserByLoginRequest.UserInfo> response = call.execute();
 
-    public static LoginResponse login(LoginRequest login) throws IOException {
-        Call<Login.UserInfo> call = RetrofitHelper.login(login);
-        Response<Login.UserInfo> response = call.execute();
-
-        LoginResponse result = new LoginResponse(login.getLogin(), login.getPassword_hash(),
-                response.body().getRole(), response.body().getError());
-        return result;
+        if(response.body() != null) {
+            System.out.println(response.body().getPasswordHash());
+            LoginResponse result = new LoginResponse(login, response.body().getPasswordHash(),
+                    RolesHelper.RoleIdToString(response.body().getAccessRightsId()),
+                    response.body().getError());
+            return result;
+        }
+        return new LoginResponse(login, "", "", "");
     }
 
     /**
@@ -120,23 +122,28 @@ public class DataClusterCommunication {
         return response.body();
     }
 
-    public List<DispatchedOrder> geDispatchedOrders() throws IOException {
-        Call<GetDispatchedOrders.OrderList>  call = RetrofitHelper.getOrders();
+    /**
+     * API request to data cluster for getting list of all warehouses in the system
+     * @return object with error or list of employees
+     * @throws IOException
+     */
+    public static List<Warehouse> getWarehousesList() throws IOException {
+        Call<GetWarehouses.WarehousesResponse> call = RetrofitHelper.getWarehousesList();
 
-        Response<GetDispatchedOrders.OrderList> response = call.execute();
-        List<DispatchedOrder> orders = response.body().getOrders();
-        if(orders == null){
-            orders = new ArrayList<>();
+        Response<GetWarehouses.WarehousesResponse> response =
+                call.execute();
+        if (response.body() != null &&
+                ( response.body().getError().equals("none") || response.body().getError().length() == 0)) {
+            return response.body().getWarehouses();
         }
-        return orders;
-
+        return null;
     }
 
-    public DispatchedOrder geDispatchedOrder(Integer id) throws IOException {
-        Call<getDispatchedOrder.Order>  call = RetrofitHelper.getOrder(id);
-        Response<getDispatchedOrder.Order> response = call.execute();
-        return response.body().getOrders();
+    public List<DispatchedOrder> geDispatchedOrders(){
+        return new ArrayList<>();
+    }
 
-
+    public DispatchedOrder geDispatchedOrder(String id){
+        return new DispatchedOrder();
     }
 }
