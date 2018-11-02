@@ -32,6 +32,6 @@ public class MapRestController {
         res.put("longitude", truck.getLongitude());
 
 
-        messagingTemplate.convertAndSendToUser(truck.getUsername(),"/queue/reply", res);
+        messagingTemplate.convertAndSend("/topic/trucks", res);
     }
 }

@@ -9,11 +9,12 @@ var map = new mapboxgl.Map({
 var socket = new SockJS('/ws');
 var stompClient = Stomp.over(socket);
 
+var markersMap = {};
+
 stompClient.connect({}, onConnected, onError);
 
-
 function onConnected() {
-    stompClient.subscribe('/user/queue/reply', onMessageReceived);
+    stompClient.subscribe('/topic/trucks', onMessageReceived);
 }
 
 function onError(error) {
@@ -23,9 +24,6 @@ function onError(error) {
 function onMessageReceived(payload) {
 
     var truck = JSON.parse(payload.body);
-    console.log(truck.longitude);
-    console.log(truck.latitude);
-    console.log(truck.id);
 
     var layer = map.getLayer(truck.id.toString());
     if (typeof layer != "undefined") {
@@ -33,6 +31,11 @@ function onMessageReceived(payload) {
         map.removeLayer(truck.id.toString());
         map.removeSource(truck.id.toString());
     }
+    addTruckToMap(truck);
+}
+
+
+function addTruckToMap(truck) {
     map.addLayer({
     "id":  truck.id.toString(),
         "type": "symbol",
