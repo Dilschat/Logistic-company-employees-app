@@ -1,33 +1,30 @@
 package com.employee.app.Employee.app.service.interfaces;
 
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import retrofit2.Call;
 import retrofit2.http.*;
 
 public interface UserByLoginRequest {
 
     @Headers({"Content-Type: application/json"})
-    @POST("/user_by_login")
-    Call<UserByLoginRequest.UserInfo> userByLogin(@Body String login);
+    @GET("/info_by_login")
+    Call<UserByLoginRequest.UserInfo> userByLogin(@Query("login") String login);
 
     public class UserInfo {
-        private String password, role, error;
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getRole() {
-            return role;
-        }
-
-        public void setRole(String role) {
-            this.role = role;
-        }
+        @SerializedName("error")
+        @Expose
+        private String error;
+        @SerializedName("access_rights_id")
+        @Expose
+        private int accessRightsId;
+        @SerializedName("login")
+        @Expose
+        private String login;
+        @SerializedName("password_hash")
+        @Expose
+        private String passwordHash;
 
         public String getError() {
             return error;
@@ -35,6 +32,30 @@ public interface UserByLoginRequest {
 
         public void setError(String error) {
             this.error = error;
+        }
+
+        public int getAccessRightsId() {
+            return accessRightsId;
+        }
+
+        public void setAccessRightsId(int accessRightsId) {
+            this.accessRightsId = accessRightsId;
+        }
+
+        public String getLogin() {
+            return login;
+        }
+
+        public void setLogin(String login) {
+            this.login = login;
+        }
+
+        public String getPasswordHash() {
+            return passwordHash;
+        }
+
+        public void setPasswordHash(String passwordHash) {
+            this.passwordHash = passwordHash;
         }
     }
 }

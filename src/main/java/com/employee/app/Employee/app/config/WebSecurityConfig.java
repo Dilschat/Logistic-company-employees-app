@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-
+                .csrf().disable()
                 .userDetailsService(employeesDetailsService)
                 .authorizeRequests()
                 .anyRequest().authenticated()
@@ -49,6 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     public void configure(WebSecurity web) {
+        web.ignoring().antMatchers("/webjars/**","/css/**", "/js/**", "/thymeleaf/**", "/static/**", "/update_position/**");
         web.ignoring().antMatchers("/webjars/**","/css/**", "/js/**", "/thymeleaf/**", "/static/**","/public/**","/error/**");
     }
 

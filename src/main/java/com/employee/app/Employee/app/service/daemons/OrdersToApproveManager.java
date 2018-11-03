@@ -2,15 +2,13 @@ package com.employee.app.Employee.app.service.daemons;
 
 import com.employee.app.Employee.app.model.Order;
 import com.employee.app.Employee.app.service.DataClusterCommunication;
+import com.employee.app.Employee.app.service.singletones.OrdersToApproveQueue;
 
 import java.io.IOException;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
 
-/**
- * Created by niyaz on 06.10.2018.
- */
 public class OrdersToApproveManager {
 
     private static Thread thread;
@@ -43,7 +41,7 @@ public class OrdersToApproveManager {
                                 }
                             }
                         }
-                        wait(5000);
+                        wait(20000);
                     } catch (InterruptedException e) {
                         e.printStackTrace(); // shouldn't happen "WHAT ARE YOU DOING IN MY SWAMP?"
                     } catch (IOException e) {

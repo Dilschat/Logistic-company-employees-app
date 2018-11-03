@@ -12,6 +12,8 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("thymeleaf/order_manager_main");
         registry.addViewController("/main").setViewName("thymeleaf/order_manager_main");
         registry.addViewController("/login").setViewName("thymeleaf/login");
+
+        registry.addViewController("/map").setViewName("thymeleaf/maps");
         registry.addViewController("/control_main").setViewName("thymeleaf/control_manager_main.html");
 
     }

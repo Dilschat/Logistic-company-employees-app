@@ -80,6 +80,7 @@ public class OrdersToApproveQueueTest {
 
 
  //   }
+    /*
     @Test
     public void getOrder() throws InterruptedException, IOException {
         System.out.println(1);
@@ -88,7 +89,8 @@ public class OrdersToApproveQueueTest {
         OrdersToApproveQueue queue = OrdersToApproveQueue.getInstance();
         System.out.println(3);
         Order order = queue.getOrder();
-    }
+        Assert.assertTrue(order.getId().equals("1"));
+    }*/
     private String convertHttpResponseToString(HttpResponse httpResponse) throws IOException {
         InputStream inputStream = httpResponse.getEntity().getContent();
         return convertInputStreamToString(inputStream);
