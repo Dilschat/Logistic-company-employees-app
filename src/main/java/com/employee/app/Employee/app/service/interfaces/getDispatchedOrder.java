@@ -7,9 +7,6 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.POST;
-
-import java.util.List;
 
 public interface getDispatchedOrder {
     @Headers({"Content-Type: application/json"})
@@ -20,7 +17,7 @@ public interface getDispatchedOrder {
         @SerializedName("orders")
         @Expose
         private DispatchedOrder order = null;
-        @SerializedName("error")
+        @SerializedName("public/error")
         @Expose
         private String error;
 

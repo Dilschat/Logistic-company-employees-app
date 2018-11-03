@@ -1,7 +1,6 @@
 package com.employee.app.Employee.app.service.interfaces;
 
 import com.employee.app.Employee.app.model.DispatchedOrder;
-import com.employee.app.Employee.app.model.Employee;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import retrofit2.Call;
@@ -19,7 +18,7 @@ public interface GetDispatchedOrders {
         @SerializedName("orders")
         @Expose
         private List<DispatchedOrder> orders = null;
-        @SerializedName("error")
+        @SerializedName("public/error")
         @Expose
         private String error;
 

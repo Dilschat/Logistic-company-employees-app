@@ -1,14 +1,11 @@
 package com.employee.app.Employee.app.service.interfaces;
 
 import com.employee.app.Employee.app.model.Employee;
-import com.employee.app.Employee.app.model.RequestError;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.POST;
 
 import java.util.List;
 
@@ -26,7 +23,7 @@ public interface GetEmployeesList {
         @SerializedName("employees")
         @Expose
         private List<Employee> employees = null;
-        @SerializedName("error")
+        @SerializedName("public/error")
         @Expose
         private String error;
 
