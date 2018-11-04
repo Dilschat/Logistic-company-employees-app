@@ -9,7 +9,7 @@ import retrofit2.http.*;
 public interface UserByLoginRequest {
 
     @Headers({"Content-Type: application/json"})
-    @GET("/info_by_login")
+    @GET("/user_by_login")
     Call<UserByLoginRequest.UserInfo> userByLogin(@Query("login") String login);
 
     public class UserInfo {

@@ -36,7 +36,7 @@ public class DispatchedOrdersController {
 
     @GetMapping(value = "/dispatched_orders", params = {"id"})
     public String getOrderDetails(Model order, @RequestParam(value = "id") String id) throws IOException {
-        DispatchedOrder dispatchedOrder =  ordersService.geDispatchedOrder(Integer.getInteger(id));
+        DispatchedOrder dispatchedOrder =  ordersService.geDispatchedOrder(id);
         order.addAttribute("order", dispatchedOrder);
         if(dispatchedOrder.getOrderStatus().equals("Validated")
                 || dispatchedOrder.getOrderStatus().equals("Delivering")) {
