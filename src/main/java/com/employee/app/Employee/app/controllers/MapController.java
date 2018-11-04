@@ -1,7 +1,9 @@
 package com.employee.app.Employee.app.controllers;
 
 import com.employee.app.Employee.app.model.Truck;
+import com.employee.app.Employee.app.model.Warehouse;
 import com.employee.app.Employee.app.service.singletones.TruckSingleton;
+import com.employee.app.Employee.app.service.singletones.WarehousesSingleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.http.HttpStatus;
@@ -21,8 +23,8 @@ import java.util.List;
 public class MapController {
 
     @GetMapping
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public List<Truck> getTrucks(){
+    @ResponseStatus(HttpStatus.OK)
+    public List<Truck> getTrucks() {
         TruckSingleton singleton = TruckSingleton.getInstance();
         return singleton.getTrucks();
     }

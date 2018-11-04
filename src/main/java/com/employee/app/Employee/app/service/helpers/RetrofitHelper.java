@@ -65,6 +65,18 @@ public class RetrofitHelper {
         return retrofit.getWarehousesList();
     }
 
+
+    public static Call<AddressGeocodingRequest.GeocodingResponse> getCoordinates(String address){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://search.maps.sputnik.ru")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        AddressGeocodingRequest call = retrofit.create(AddressGeocodingRequest.class);
+
+        return call.getWarehousesList(1, "5032f91e8da6431d8605-f9c0c9a00357", address);
+    }
+
     /**
      * @return configurated retrofit object
      */

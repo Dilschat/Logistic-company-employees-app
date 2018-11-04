@@ -108,4 +108,36 @@ public class Warehouse {
         this.additionalInfo = additionalInfo;
     }
 
+
+    private double longitude, latitude;
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getFullAddress(){
+        StringBuilder address = new StringBuilder();
+        address.append(getCountry());
+        address.append(", ");
+        address.append(getRegion());
+        address.append(", ");
+        address.append(getCity());
+        address.append(", ");
+        address.append(getStreet());
+        address.append(", ");
+        address.append(getBuilding());
+        return address.toString();
+    }
 }

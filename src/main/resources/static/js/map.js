@@ -1,10 +1,7 @@
 'use strict';
-mapboxgl.accessToken = 'pk.eyJ1IjoidmljYXJvIiwiYSI6ImNqbmlxeGp2czBycGIzcW9zYmFheWZnbnMifQ.cisqDTqvlS5vIoJueqTIGg';
-var map = new mapboxgl.Map({
-              container: 'map',
-              style: 'mapbox://styles/mapbox/streets-v9',
-              zoom: 2
-            });
+ L.mapbox.accessToken = 'pk.eyJ1IjoidmljYXJvIiwiYSI6ImNqbmlxeGp2czBycGIzcW9zYmFheWZnbnMifQ.cisqDTqvlS5vIoJueqTIGg';
+          var map = L.mapbox.map('map', 'mapbox.streets')
+              .setView([37.9, -77], 2);
 
 
 var socket = new SockJS('/ws');
@@ -13,10 +10,11 @@ var stompClient = Stomp.over(socket);
 var markersMap = {};
 
 
-map.on('load', function(){
+map.on('ready', function(){
     getTrucks();
+	getWarehouses();
     stompClient.connect({}, onConnected, onError);
-})
+});
 
 function onConnected() {
     stompClient.subscribe('/topic/trucks', onMessageReceived);
@@ -29,71 +27,74 @@ function onError(error) {
 function onMessageReceived(payload) {
 
     var truck = JSON.parse(payload.body);
-
-    var layer = map.getLayer(truck.id.toString());
-    if (typeof layer != "undefined") {
-        console.log("removing layer");
-        map.removeLayer(truck.id.toString());
-        map.removeSource(truck.id.toString());
-    }
+	console.log(truck);
+	
     addTruckToMap(truck);
 }
 
 
 function addTruckToMap(truck) {
-     map.addLayer({
-     "id":  truck.id.toString(),
-         "type": "symbol",
-         "source": {
-         "type": "geojson",
-         "data": {
-             "type": "Feature",
-             "geometry": {
-                 "type": "Point",
-                 "coordinates": [truck.longitude, truck.latitude]
-             },
-                 "properties": {
-                     "title": truck.id.toString(),
-                     "icon": "car"
-                 }
-             }
-         },
-         "layout": {
-             "icon-image": "{icon}-15",
-             "text-field": "{title}",
-             "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-             "text-offset": [0, 0.6],
-             "text-anchor": "top"
-         }
-     });
+	var oldTruck = markersMap[truck.id];
+	if(typeof(oldTruck) != "undefined"){
+        map.removeLayer(oldTruck);
+	}
+	
+    var newMarker = L.marker([truck.latitude, truck.longitude], {
+              icon: L.mapbox.marker.icon({
+                  'marker-size': 'large',
+                  'marker-symbol': 'bus',
+                  'marker-color': '#1886c9',
+				  'title': truck.id.toString()
+              })
+          });
+	 markersMap[truck.id] = newMarker;
+	 newMarker.bindPopup(truck.id.toString()).addTo(map);
  }
-
-function getWarehouses() {
-    const Http = new XMLHttpRequest();
-    const url='http:localhost:8083/map/warehouses';
-    Http.open("GET", url);
-    Http.send();
-    Http.onreadystatechange=(e)=>{
-        console.log(Http.responseText)
-    }
+ 
+ function addWarehouseToMap(warehouse) {
+     L.marker([warehouse.latitude, warehouse.longitude], {
+              icon: L.mapbox.marker.icon({
+                  'marker-size': 'large',
+                  'marker-symbol': 'grocery',
+                  'marker-color': '#1886c9'
+              })
+          }).bindPopup(warehouse.address.toString()).addTo(map);
  }
 
 function getTrucks() {
+	console.log("getting trucks");
     const Http = new XMLHttpRequest();
     const url='http://localhost:8083/all_trucks';
     Http.open("GET", url);
     Http.send();
-    Http.onreadystatechange=(e)=>{
-        console.log(Http.responseText)
-        var trucks = JSON.parse(Http.responseText);
-        console.log(trucks)
+	Http.onreadystatechange=function(){
+		console
+		if(this.readyState == 4 && this.status == 200) {
+			console.log(Http.responseText)
+			var trucks = JSON.parse(Http.responseText);
+			console.log(trucks)
 
-        trucks.forEach(function(truck){
-            console.log("single truck");
-			console.log(truck);
-			console.log(truck.id);
-			console.log(truck.longitude);
-			addTruckToMap(truck);
-		});
-    }
+			trucks.forEach(function(truck){
+				addTruckToMap(truck);
+			});
+		}
+	};
+ }
+ 
+ function getWarehouses() {
+	console.log("getting warehouses");
+    const Http = new XMLHttpRequest();
+    const url='http://localhost:8083/all_warehouses';
+    Http.open("GET", url);
+    Http.send();
+	Http.onreadystatechange=function(){
+		if(this.readyState == 4 && this.status == 200) {
+			var warehouses = JSON.parse(Http.responseText);
+			console.log(warehouses)
+
+			warehouses.forEach(function(warehouse){
+				addWarehouseToMap(warehouse);
+			});
+		}
+	};
  }
