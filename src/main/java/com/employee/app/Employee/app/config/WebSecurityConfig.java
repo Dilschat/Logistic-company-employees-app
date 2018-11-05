@@ -49,8 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/webjars/**","/css/**", "/js/**", "/thymeleaf/**", "/static/**", "/update_position/**");
-        web.ignoring().antMatchers("/webjars/**","/css/**", "/js/**", "/thymeleaf/**", "/static/**","/public/**","/error/**");
+        web.ignoring().antMatchers("/webjars/**","/css/**", "/js/**", "/thymeleaf/**", "/static/**");
     }
 
 

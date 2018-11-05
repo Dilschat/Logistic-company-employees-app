@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.IOException;
 import java.util.List;
 
-@PreAuthorize("hasRole('controlOperator')")
+@PreAuthorize("hasRole('ROLE_ControlOperator')")
 @Controller
 public class DispatchedOrdersController {
     private final DataClusterCommunication ordersService;
@@ -36,7 +36,7 @@ public class DispatchedOrdersController {
 
     @GetMapping(value = "/dispatched_orders", params = {"id"})
     public String getOrderDetails(Model order, @RequestParam(value = "id") String id) throws IOException {
-        DispatchedOrder dispatchedOrder =  ordersService.geDispatchedOrder(Integer.getInteger(id));
+        DispatchedOrder dispatchedOrder =  ordersService.geDispatchedOrder(id);
         order.addAttribute("order", dispatchedOrder);
         if(dispatchedOrder.getOrderStatus().equals("Validated")
                 || dispatchedOrder.getOrderStatus().equals("Delivering")) {
@@ -57,6 +57,6 @@ public class DispatchedOrdersController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "thymeleaf/continue";
+        return "validate_continue";
     }
 }

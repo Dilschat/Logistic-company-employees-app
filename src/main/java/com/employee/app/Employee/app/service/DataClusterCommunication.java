@@ -9,7 +9,11 @@ import com.employee.app.Employee.app.service.interfaces.GetWarehouses;
 import com.employee.app.Employee.app.service.interfaces.OrdersToApproveRequest;
 import com.employee.app.Employee.app.service.interfaces.UserByLoginRequest;
 import com.employee.app.Employee.app.service.interfaces.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -20,12 +24,8 @@ import java.util.List;
 @Component
 public class DataClusterCommunication {
 
-    /**
-     * connects to the data cluster and gets information about user by login
-     * @param login user's login
-     * @return LoginResponse with information about the user
-     * @throws IOException sometimes(((
-     */
+
+
     public static LoginResponse userByLogin(String login) throws IOException {
         Call<UserByLoginRequest.UserInfo> call = RetrofitHelper.userByLogin(login);
         Response<UserByLoginRequest.UserInfo> response = call.execute();
@@ -51,6 +51,7 @@ public class DataClusterCommunication {
         Response<OrdersToApproveRequest.OrdersToApproveResponse> response =
                 call.execute();
         return response.body().getOrders();
+
     }
 
     /**
@@ -63,6 +64,20 @@ public class DataClusterCommunication {
         Call<RequestError> call = RetrofitHelper.approveOrder(order);
 
         Response<RequestError> response =
+                call.execute();
+        return response.body();
+    }
+
+    /**
+     * API request to data cluster for apporving some order
+     * @param order to approve
+     * @return
+     * @throws IOException
+     */
+    public static AddOrder.OrderCreationResponse addOrder(Order order) throws IOException {
+        Call<AddOrder.OrderCreationResponse> call = RetrofitHelper.addOrder(order);
+
+        Response<AddOrder.OrderCreationResponse> response =
                 call.execute();
         return response.body();
     }

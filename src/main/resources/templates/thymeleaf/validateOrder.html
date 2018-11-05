@@ -157,18 +157,22 @@
             <li class="breadcrumb-item">
                 <a href="orderOperator.html">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Add new order</li>
+            <li class="breadcrumb-item active">Validate order</li>
         </ol>
-        <h1>Add new order</h1>
+        <h1>Validate order</h1>
         <hr>
 
 
-        <form action="#" th:action="@{/add_order}" th:object="${order}" method="post">
+        <form action="#" th:action="@{/next_order}" th:object="${order}" method="post">
+            <p><h6>Id</h6></p>
+            <div class="col-md-2.5">
+                <input class="form-control" placeholder="OrderId" th:field="*{id}" readonly/>
+            </div>
             <p><h6>Order status</h6></p>
             <div class="col-md-2.5">
                 <label>
                     <select th:field="*{orderStatus}">
-                        <option th:value="'Waiting validation'" th:text="'Waiting validation'"></option>
+                        <option th:value="'ƒn'" th:text="'Waiting validation'"></option>
                         <option th:value="'Validated'" th:text="'Validated'"></option>
                         <option th:value="'Delivering'" th:text="'Delivering'"></option>
                         <option th:value="'Delivered'" th:text="'Delivered'"></option>
@@ -183,7 +187,7 @@
             <div class="col-md-2.5">
                 <input class="form-control" placeholder="Delivery type" th:field="*{deliveryType}"/>
             </div>
-             <p><h5>Information about sender:</h5></p>
+            <p><h5>Information about sender:</h5></p>
             <p><h6>Address:</h6></p>
             <div class="form-row">
                 <div class="col-md-3">
@@ -201,15 +205,15 @@
             </div>
             <p><h6>Sender personal info</h6></p>
             <div class="form-row">
-              <div class="col-md-3">
-                <input class="form-control" placeholder="First Name" th:field="*{sender.name}"/>
-              </div>
-              <div class="col-md-3">
-                <input class="form-control",size=20, placeholder="Last Name" th:field="*{sender.surname}"/>
-              </div>
-              <div class="col-md-3">
-                <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{sender.phoneNumber}"/>
-              </div>
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="First Name" th:field="*{sender.name}"/>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control",size=20, placeholder="Last Name" th:field="*{sender.surname}"/>
+                </div>
+                <div class="col-md-3">
+                    <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{sender.phoneNumber}"/>
+                </div>
             </div>
             <p><h5>Information about receiver:</h5></p>
             <p><h6>Address:</h6></p>
@@ -239,19 +243,19 @@
                     <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{receiver.phoneNumber}"/>
                 </div>
             </div>
-             <div>
-                  <div class="col-md-2.5">
-                      <input class="form-control" placeholder="Attached notes" th:field="*{attachedNotes}"/>
-                  </div>
-              </div>
+            <div>
+                <div class="col-md-2.5">
+                    <input class="form-control" placeholder="Attached notes" th:field="*{attachedNotes}"/>
+                </div>
+            </div>
             <br>
 
 
-            
-           <!-- footer -->
+
+            <!-- footer -->
             <div class="modal-footer">
-               <input class="btn btn-primary" type="submit" name = "action" value="Submit"/>
-               <input class="btn btn-primary" type="submit" name = "action" value="Cancel"/>
+                <input class="btn btn-primary" type="submit" name = "action" value="Submit"/>
+                <input class="btn btn-primary" type="submit" name = "action" value="Cancel"/>
             </div>
         </form>
 

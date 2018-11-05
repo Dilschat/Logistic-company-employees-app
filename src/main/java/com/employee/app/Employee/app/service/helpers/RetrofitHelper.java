@@ -29,6 +29,11 @@ public class RetrofitHelper {
         return retrofit.approveOrder(order);
     }
 
+    public static Call<AddOrder.OrderCreationResponse> addOrder(Order order){
+        AddOrder retrofit = getRetrofit().create(AddOrder.class);
+        return retrofit.addOrder(order);
+    }
+
     public static Call<RequestError> registerNewEmployee(Employee employee) {
         RegisterNewEmployee retrofit = getRetrofit().create(RegisterNewEmployee.class);
         return retrofit.registerNewEmployee(employee);
