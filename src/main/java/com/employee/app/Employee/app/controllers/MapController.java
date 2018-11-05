@@ -9,6 +9,7 @@ import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,8 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
+@PreAuthorize("hasAnyRole('ROLE_ControlOperator','ROLE_TopManager')")
+
 @ExposesResourceFor(Truck.class)
 @RequestMapping("/all_trucks")
 public class MapController {

@@ -36,7 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .userDetailsService(employeesDetailsService)
                 .authorizeRequests()
-                .anyRequest().authenticated()
+                .anyRequest().authenticated().antMatchers("/map")
+                .hasRole("TopManager").anyRequest().hasRole("ControlOperator").anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .defaultSuccessUrl("/main",true)
@@ -44,7 +45,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll();
+                .permitAll()
+        ;
 
     }
     @Override

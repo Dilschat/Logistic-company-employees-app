@@ -6,6 +6,7 @@ import com.employee.app.Employee.app.service.singletones.TruckSingleton;
 import com.employee.app.Employee.app.service.singletones.WarehousesSingleton;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -18,7 +19,10 @@ import java.util.List;
 /**
  * Created by niyaz on 04.11.2018.
  */
+
 @RestController
+@PreAuthorize("hasAnyRole('ROLE_ControlOperator','ROLE_TopManager')")
+
 @RequestMapping("/all_warehouses")
 public class WarehousesController {
 

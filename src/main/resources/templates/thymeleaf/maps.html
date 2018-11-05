@@ -43,53 +43,20 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" th:href="@{/main}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
        
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
-          <a class="nav-link" href="workers.html">
-            <i class="fa fa-fw fa-address-card"></i>
-            <span class="nav-link-text">Employees</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
-          <a class="nav-link" href="listOrders.html">
+          <a class="nav-link" th:href="@{/dispatched_orders}">
             <i class="fa fa-fw fa-star"></i>
             <span class="nav-link-text">List of Orders</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Statistics">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Statistics</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a href="#">Orders</a>
-            </li>
-            <li>
-              <a href="#">Employees</a>
-            </li>
-            <li>
-              <a href="#">Company</a>
-            </li>
-          </ul>
-        </li> 
-       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Maps">
-          <a class="nav-link" href="maps.html">
-            <i class="fa fa-fw fa-map"></i>
-            <span class="nav-link-text">Maps</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Order">
-          <a class="nav-link" href="orderReport.html">
-            <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Generate Order report</span>
-          </a>
-        </li>
+
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
