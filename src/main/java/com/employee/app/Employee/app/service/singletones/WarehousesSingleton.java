@@ -3,6 +3,7 @@ package com.employee.app.Employee.app.service.singletones;
 import com.employee.app.Employee.app.model.Warehouse;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -35,12 +36,8 @@ public class WarehousesSingleton {
         return localInstance;
     }
 
-    public ArrayList<Warehouse> getTrucks(){
+    public ArrayList<Warehouse> getWarehouses(){
         return warehouses;
-    }
-
-    public void addTruck(Warehouse truck){
-        warehouses.add(truck);
     }
 
     public void setWarehouses(List<Warehouse> warehouses) {

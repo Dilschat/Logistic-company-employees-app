@@ -8,33 +8,29 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 @JsonInclude
-@JsonPropertyOrder({"id","longitude", "latitude", "type", "username" })
+@JsonPropertyOrder({"id","longitude", "latitude", "type" })
 public class Truck {
 
     private long id;
     private double longitude, latitude;
-    private String username;
 
     public Truck(){}
-    public Truck(long id, double x, double y, String username) {
+    public Truck(long id, double x, double y) {
         this.id = id;
         this.longitude = x;
         this.latitude = y;
-        this.username = username;
     }
 
     @JsonCreator
     public static Truck build(
         @JsonProperty("id") long id,
         @JsonProperty("longitude") double longitude,
-        @JsonProperty("latitude") double latitude,
-        @JsonProperty("username") String username
+        @JsonProperty("latitude") double latitude
     ){
         Truck truck = new Truck();
         truck.setId(id);
         truck.setLatitude(latitude);
         truck.setLongitude(longitude);
-        truck.setUsername(username);
         return truck;
     }
     @JsonProperty("id")
@@ -62,15 +58,6 @@ public class Truck {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
-    }
-
-    @JsonProperty("username")
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 }
 
