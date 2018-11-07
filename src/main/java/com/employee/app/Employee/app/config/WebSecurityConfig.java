@@ -32,21 +32,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .userDetailsService(employeesDetailsService)
-                .authorizeRequests()
-                .anyRequest().authenticated().antMatchers("/map")
-                .hasRole("TopManager").anyRequest().hasRole("ControlOperator").anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .defaultSuccessUrl("/main",true)
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll()
-        ;
+//        http
+//                .csrf().disable()
+//                .userDetailsService(employeesDetailsService)
+//                .authorizeRequests()
+//                .anyRequest().authenticated().antMatchers("/map")
+//                .hasRole("TopManager").anyRequest().hasRole("ControlOperator").anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .defaultSuccessUrl("/main",true)
+//                .loginPage("/login")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll()
+//        ;
 
     }
     @Override
