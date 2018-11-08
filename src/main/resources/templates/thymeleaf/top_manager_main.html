@@ -45,6 +45,32 @@
                     <span class="nav-link-text">Map</span>
                 </a>
             </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Statistics">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">Statistics</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li>
+                        <a th:href="@{/graph/chart}">Orders</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/graph/column_chart}">Employees</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents1" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">Employees</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents1">
+                    <li>
+                        <a th:href="@{/add_employee}">Add employee</a>
+                    </li>
+
+                </ul>
+            </li>
 
         </ul>
         <ul class="navbar-nav sidenav-toggler">

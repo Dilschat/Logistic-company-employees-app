@@ -15,6 +15,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/graph")
+@PreAuthorize("hasRole('ROLE_TopManager')")
 public class GraphsController {
 
     @Autowired

@@ -31,7 +31,7 @@ public class MainController {
 
             return "thymeleaf/order_manager_main";
 
-       }else if(role.equals("ROLE_TOP_MANAGER")){
+       }else if(role.equals("ROLE_TopManager")){
             return "thymeleaf/top_manager_main.html";
 
         }else{
