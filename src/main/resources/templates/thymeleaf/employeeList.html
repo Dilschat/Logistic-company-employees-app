@@ -44,6 +44,35 @@
                     <span class="nav-link-text">Orders</span>
                 </a>
             </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Statistics">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">Statistics</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li>
+                        <a th:href="@{/graph/chart}">Orders graph</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/graph/column_chart}">Profit graph</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents1" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">Employees</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents1">
+                    <li>
+                        <a th:href="@{/add_employee}">Add employee</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/employees}">Employees</a>
+                    </li>
+
+                </ul>
+            </li>
 
         </ul>
 
@@ -161,31 +190,28 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">                        <thead>
-                        <tr>
-                            <th> id</th>
-                            <th> Order status</th>
-                            <th> Sender city</th>
-                            <th> Sender country</th>
-                            <th> Receiver city</th>
-                            <th> Receiver country</th>
-                            <th> Profit</th>
-                            <th> Currency</th>
+                    <tr>
+                        <th> Login</th>
+                        <th> Name</th>
+                        <th> Surname</th>
+                        <th> Delete</th>
 
-                        </tr>
-                        </thead>
+
+
+                    </tr>
+                    </thead>
                         <tbody>
-                        <tr th:if="${orders.isEmpty()}">
-                            <td colspan="2"> No dispathed orders available</td>
+                        <tr th:if="${employees.isEmpty()}">
+                            <td colspan="2"> No Employees</td>
                         </tr>
-                        <tr th:each="order : ${orders}">
-                            <td><a th:href="@{/dispatched_orders(id=${order.id})}"><span th:text="${order.id}"> id </span></a></td>
-                            <td><span th:text="${order.orderStatus}"> Order status </span></td>
-                            <td><span th:text="${order.getSender().getAddress().getCity()}"> Sender city </span></td>
-                            <td><span th:text="${order.sender.address.country}"> Sender country </span></td>
-                            <td><span th:text="${order.receiver.address.city}"> Receiver city </span></td>
-                            <td><span th:text="${order.receiver.address.country}"> Receiver country </span></td>
-                            <td><span th:text="${order.profitValue}"> Profit </span></td>
-                            <td><span th:text="${order.profitCurrency}"> Currency </span></td>
+                        <tr th:each="e : ${employees}">
+                            <td><span th:text="${e.login}">Login</span></td>
+                            <td><span th:text="${e.name}">Name</span></td>
+                            <td><span th:text="${e.surname}">Surname</span></td>
+                            <td><a th:href="@{/employees(login=${e.login})}"><span th:text="Delete"> Delete </span></a></td>
+
+
+
                         </tr>
                         </tbody>
                     </table>

@@ -23,6 +23,7 @@ import java.util.List;
 
 @Component
 public class DataClusterCommunication {
+    static ArrayList<Employee> employees = new ArrayList<>();
 
 
 
@@ -89,6 +90,7 @@ public class DataClusterCommunication {
      * @throws IOException
      */
     public static RequestError registerNewEmployee(Employee employee) throws IOException {
+        employees.add(employee);
         Call<RequestError> call = RetrofitHelper.registerNewEmployee(employee);
 
         Response<RequestError> response =
@@ -103,11 +105,21 @@ public class DataClusterCommunication {
      * @throws IOException
      */
     public static RequestError deleteEmployee(String login) throws IOException {
+        for(int i= 0; i<employees.size();i++){
+            if(employees.get(i).getLogin().equals(login)){
+                employees.remove(i);
+            }
+        }
         Call<RequestError> call = RetrofitHelper.deleteEmployee(login);
 
         Response<RequestError> response =
                 call.execute();
         return response.body();
+    }
+    public static void fillEmployees(){
+        employees.add(new Employee("orderOperator","p","orderOperator","test","test"));
+        employees.add(new Employee("a","a","controlOperator","test","test"));
+        employees.add(new Employee("top","p","TopManager","test","test"));
     }
 
     /**
@@ -115,12 +127,10 @@ public class DataClusterCommunication {
      * @return object with error or list of employees
      * @throws IOException
      */
-    public static GetEmployeesList.EmployeesList getEmployeesList() throws IOException {
-        Call<GetEmployeesList.EmployeesList> call = RetrofitHelper.getEmployeesList();
+    public static List<Employee> getEmployeesList() throws IOException {
 
-        Response<GetEmployeesList.EmployeesList> response =
-                call.execute();
-        return response.body();
+        return employees;
+
     }
 
     /**
@@ -154,11 +164,25 @@ public class DataClusterCommunication {
         return null;
     }
 
-    public List<DispatchedOrder> geDispatchedOrders(){
-        return new ArrayList<>();
+    public List<DispatchedOrder> geDispatchedOrders() throws IOException {
+        Call<GetDispatchedOrders.OrderList> orders = RetrofitHelper.getOrders();
+        Response<GetDispatchedOrders.OrderList> response  = orders.execute();
+        if(response.body() == null){
+            return null;
+        }else {
+            return response.body().getOrders();
+        }
     }
 
-    public DispatchedOrder geDispatchedOrder(String id){
-        return new DispatchedOrder();
+    public DispatchedOrder geDispatchedOrder(String id) throws IOException {
+        Call<getDispatchedOrder.Order> orders = RetrofitHelper.getOrder(Integer.parseInt(id));
+        Response<getDispatchedOrder.Order> response  = orders.execute();
+        if(response.body() == null){
+            return null;
+        }else {
+            return response.body().getOrders();
+        }
     }
+
+
 }

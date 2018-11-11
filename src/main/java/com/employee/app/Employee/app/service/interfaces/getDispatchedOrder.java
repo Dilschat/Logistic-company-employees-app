@@ -7,17 +7,18 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Query;
 
 public interface getDispatchedOrder {
     @Headers({"Content-Type: application/json"})
     @GET("/get_order_by_id")
-    Call<getDispatchedOrder.Order> getOrder(@Body Integer id);
+    Call<getDispatchedOrder.Order> getOrder(@Query("order_id") Integer id);
 
     public class Order {
-        @SerializedName("orders")
+        @SerializedName("order")
         @Expose
-        private DispatchedOrder order = null;
-        @SerializedName("public/error")
+        private DispatchedOrder order;
+        @SerializedName("error")
         @Expose
         private String error;
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ import java.io.IOException;
 
 public class EmployeeControlller {
     @GetMapping("/add_employee")
-    public ModelAndView addEmployee(ModelAndView employeeView){
+    public ModelAndView addEmployee(ModelAndView employeeView) {
         Employee employee = new Employee();
         employeeView.addObject(employee);
         employeeView.setViewName("thymeleaf/addEmployee");
@@ -25,12 +26,24 @@ public class EmployeeControlller {
 
     @PostMapping("/add_employee")
     public String submitOrder(@ModelAttribute Employee employee) throws IOException {
-        if(!employee.getLogin().isEmpty()&&!employee.getPasswordHash().isEmpty()) {
+        if (!employee.getLogin().isEmpty() && !employee.getPasswordHash().isEmpty()) {
             DataClusterCommunication.registerNewEmployee(employee);
             return "thymeleaf/add_employee_continue";
-        }else {
+        } else {
             return "thymeleaf/add_employee_cont_error";
         }
 
     }
+
+    @GetMapping("/employees")
+    public ModelAndView getList( ModelAndView employeeView, @RequestParam(value = "login", required = false) String login) throws IOException {
+        if(login!=null){
+            DataClusterCommunication.deleteEmployee(login);
+        }
+        employeeView.addObject("employees", DataClusterCommunication.getEmployeesList());
+        employeeView.setViewName("thymeleaf/employeeList");
+        return employeeView;
+    }
 }
+
+

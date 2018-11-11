@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8"/>
@@ -15,6 +15,7 @@
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"/>
     <!-- Custom styles for this template-->
     <link rel="stylesheet" type="text/css" th:href="@{css/sb-admin.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/custom.css}"/>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -28,63 +29,6 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" th:href="@{/main}">
-                    <i class="fas fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
-                <a class="nav-link" th:href="@{/dispatched_orders}">
-                    <i class="fa fa-fw fa-address-card"></i>
-                    <span class="nav-link-text">Orders</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
-                <a class="nav-link" th:href="@{/map}">
-                    <i class="fa fa-fw fa-address-card"></i>
-                    <span class="nav-link-text">Map</span>
-                </a>
-
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
-                <a class="nav-link" th:href="@{/dispatched_orders}">
-                    <i class="fa fa-fw fa-address-card"></i>
-                    <span class="nav-link-text">Orders</span>
-                </a>
-            </li>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Statistics">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">Statistics</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li>
-                        <a th:href="@{/graph/chart}">Orders graph</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/graph/column_chart}">Profit graph</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents1" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">Employees</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseComponents1">
-                    <li>
-                        <a th:href="@{/add_employee}">Add employee</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/employees}">Employees</a>
-                    </li>
-
-                </ul>
-            </li>
-
 
         </ul>
         <ul class="navbar-nav sidenav-toggler">
@@ -213,11 +157,103 @@
             <li class="breadcrumb-item">
                 <a href="orderOperator.html">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active"></li>
+            <li class="breadcrumb-item active">Add new order</li>
         </ol>
-        <h1>Employee added!</h1>
+        <h1>Add new order</h1>
         <hr>
 
+
+        <form action="#" th:action="@{/dispatched_orders}" th:object="${order}" method="post">
+            <p><h6>Order status</h6></p>
+            <div class="col-md-2.5">
+                <label>
+                    <select th:field="*{orderStatus}">
+                        <option th:value="'Waiting validation'" th:text="'Waiting validation'"></option>
+                        <option th:value="'Validated'" th:text="'Validated'"></option>
+                        <option th:value="'Delivering'" th:text="'Delivering'"></option>
+                        <option th:value="'Delivered'" th:text="'Delivered'"></option>
+                    </select>
+                </label>
+            </div>
+            <p><h6>Pickup type</h6></p>
+            <div class="col-md-2.5">
+                <input class="form-control" placeholder="Pickup type" th:field="*{pickupType}"/>
+            </div>
+            <p><h6>Delivery type</h6></p>
+            <div class="col-md-2.5">
+                <input class="form-control" placeholder="Delivery type" th:field="*{deliveryType}"/>
+            </div>
+            <p><h5>Information about sender:</h5></p>
+            <p><h6>Address:</h6></p>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="Country" th:field="*{sender.address.country}"/>
+                    <input class="form-control" placeholder="Street" th:field="*{sender.address.street}"/>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="Region" th:field="*{sender.address.region}"/>
+                    <input class="form-control" placeholder="Building" th:field="*{sender.address.building}"/>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="City" th:field="*{sender.address.city}"/>
+                    <input class="form-control" placeholder="Additional info" th:field="*{sender.address.additionalInfo}"/>
+                </div>
+            </div>
+            <p><h6>Sender personal info</h6></p>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="First Name" th:field="*{sender.name}"/>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control",size=20, placeholder="Last Name" th:field="*{sender.surname}"/>
+                </div>
+                <div class="col-md-3">
+                    <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{sender.phoneNumber}"/>
+                </div>
+            </div>
+            <p><h5>Information about receiver:</h5></p>
+            <p><h6>Address:</h6></p>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="Country" th:field="*{receiver.address.country}"/>
+                    <input class="form-control" placeholder="Street" th:field="*{receiver.address.street}"/>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="Region" th:field="*{receiver.address.region}"/>
+                    <input class="form-control" placeholder="Building" th:field="*{receiver.address.building}"/>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="City" th:field="*{receiver.address.city}"/>
+                    <input class="form-control" placeholder="Additional info" th:field="*{receiver.address.additionalInfo}"/>
+                </div>
+            </div>
+            <p><h6>Sender personal info</h6></p>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <input class="form-control" placeholder="First Name" th:field="*{receiver.name}"/>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control",size=20, placeholder="Last Name" th:field="*{receiver.surname}"/>
+                </div>
+                <div class="col-md-3">
+                    <input type="tel" class="form-control",size=20, placeholder="Phone number" th:field="*{receiver.phoneNumber}"/>
+                </div>
+            </div>
+            <div>
+                <div class="col-md-2.5">
+                    <input class="form-control" placeholder="Attached notes" th:field="*{attachedNotes}"/>
+                </div>
+            </div>
+            <br>
+
+
+
+            <!-- footer -->
+            <div class="modal-footer">
+                <input class="btn btn-primary" type="submit" name = "action" value="Submit"/>
+                <input class="btn btn-primary" type="submit" name = "action" value="Cancel"/>
+            </div>
+        </form>
 
         <!-- /.container-fluid-->
         <!-- /.content-wrapper-->
@@ -246,7 +282,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
                     </div>
                 </div>
             </div>

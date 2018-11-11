@@ -1,5 +1,6 @@
 package com.employee.app.Employee.app;
 
+import com.employee.app.Employee.app.service.DataClusterCommunication;
 import com.employee.app.Employee.app.service.daemons.OrdersToApproveManager;
 import com.employee.app.Employee.app.service.daemons.WarehousesManager;
 import org.springframework.boot.SpringApplication;
@@ -20,6 +21,8 @@ public class EmployeeAppApplication {
 		SpringApplication.run(EmployeeAppApplication.class, args);
 		OrdersToApproveManager.run();
 		WarehousesManager.run();
+		DataClusterCommunication.fillEmployees();
+
 	}
 
 	@Bean

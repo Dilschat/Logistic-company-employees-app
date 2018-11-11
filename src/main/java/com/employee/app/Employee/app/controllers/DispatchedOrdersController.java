@@ -42,21 +42,27 @@ public class DispatchedOrdersController {
                 || dispatchedOrder.getOrderStatus().equals("Delivering")) {
             return "thymeleaf/dispatchedOrderDetails";
         } else if(dispatchedOrder.getOrderStatus().equals("Waiting validation")) {
-            return "thymeleaf/openOrder";
+            return "thymeleaf/openDispatchedOrder";
         } else if(dispatchedOrder.getOrderStatus().equals("Delivered")) {
             return "thymeleaf/finalDispatchedOrder";
+        } else if(dispatchedOrder.getOrderStatus().equals("OnValidating")) {
+            return "thymeleaf/openDispatchedOrder";
         } else {
             return "thymeleaf/error";
         }
     }
 
     @PostMapping(value = "/dispatched_orders")
-    public String submitOrderDetails(@ModelAttribute Order order){
-        try {
-            DataClusterCommunication.approveOrder(order);
-        } catch (IOException e) {
-            e.printStackTrace();
+    public String submitOrderDetails(@ModelAttribute Order order ,
+                                     @RequestParam(value="action", required=true) String action) throws IOException {
+        if(action.equals("Submit")) {
+
+            try {
+                DataClusterCommunication.approveOrder(order);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        return "validate_continue";
+        return "redirect:/dispatched_orders";
     }
 }
