@@ -10,4 +10,7 @@ public interface CanvasjsChartService {
 
     List<List<Map<Object, Object>>> getCanvasjsChartData();
 
+    List<List<Map<Object, Object>>> getCanvasjsColumnChartData();
+
+
 }

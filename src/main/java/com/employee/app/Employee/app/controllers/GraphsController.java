@@ -29,7 +29,7 @@ public class GraphsController {
 
     @RequestMapping(value = "/column_chart", method = RequestMethod.GET)
     public String column_chart(ModelMap modelMap) {
-        List<List<Map<Object, Object>>> canvasjsDataList = canvasjsChartService.getCanvasjsChartData();
+        List<List<Map<Object, Object>>> canvasjsDataList = canvasjsChartService.getCanvasjsColumnChartData();
         modelMap.addAttribute("dataPointsList", canvasjsDataList);
         return "column_chart";
     }

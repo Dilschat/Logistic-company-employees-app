@@ -22,4 +22,8 @@ public class CanvasjsChartServiceImpl implements CanvasjsChartService {
         return canvasjsChartDao.getCanvasjsChartData();
     }
 
+    @Override
+    public List<List<Map<Object, Object>>> getCanvasjsColumnChartData() {
+        return canvasjsChartDao.getCanvasjsColumnChartData();    }
+
 }

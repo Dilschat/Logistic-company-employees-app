@@ -194,11 +194,7 @@
             <version>4.6.1</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>3.3.7</version>
-        </dependency>
+
     </dependencies>
 
     <build>

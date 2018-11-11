@@ -14,7 +14,7 @@
                 animationEnabled: true,
                 exportEnabled: true,
                 title: {
-                    text: "Simple Column Chart with Index Labels"
+                    text: "Profit for month"
                 },
                 data: [{
                     type: "column", //change type to bar, line, area, pie, etc
@@ -47,6 +47,13 @@
     </script>
 </head>
 <body>
+<div>
+<input type="month" id="start" name="trip-start"
+       value="2018-11"
+       min="2018-10" max="2018-11" title="Set month">
+<input type="button" value="Refresh Page" onClick="window.location.reload()">
+
+</div>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>

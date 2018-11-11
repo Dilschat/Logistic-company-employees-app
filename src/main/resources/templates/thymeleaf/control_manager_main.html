@@ -159,9 +159,9 @@
                     </div>
                 </form>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            <li class="nav-item" th:href="@{/logout}">
+                <a class="nav-link" th:href="@{/logout}">
+                    <i class="fa fa-fw fa-sign-out" th:href="@{/logout}"></i>Logout</a>
             </li>
         </ul>
     </div>

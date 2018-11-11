@@ -15,4 +15,9 @@ public class CanvasjsChartDaoImpl implements CanvasjsChartDao {
         return CanvasjsChartData.getCanvasjsDataList();
     }
 
+    @Override
+    public List<List<Map<Object, Object>>> getCanvasjsColumnChartData() {
+        return CanvasjsColumnChartData.getCanvasjsDataList();
+    }
+
 }
