@@ -1,5 +1,6 @@
 package com.employee.app.Employee.app.service;
 
+import com.employee.app.Employee.app.model.LoginRequest;
 import com.employee.app.Employee.app.model.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -8,24 +9,23 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 
 @Component
 public class DataClusterUserDetailsService implements UserDetailsService {
 
 
-    private LoginnigRestClient loginnigRestClient;
 
-    @Autowired
-    DataClusterUserDetailsService(LoginnigRestClient restClient){
-        loginnigRestClient = restClient;
+    DataClusterUserDetailsService(){
+
     }
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         LoginResponse userDataLoginResponse = null;
         try {
-            userDataLoginResponse = loginnigRestClient.login(login);
+            userDataLoginResponse = DataClusterCommunication.userByLogin(login);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,6 +38,8 @@ public class DataClusterUserDetailsService implements UserDetailsService {
 
         return details;
     }
+
+
 
 
 }

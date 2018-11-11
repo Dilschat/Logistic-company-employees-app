@@ -1,21 +1,17 @@
-package com.employee.app.Employee.app.service.daemons;
+package com.employee.app.Employee.app.service.singletones;
 
 import com.employee.app.Employee.app.model.Order;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
+import java.util.*;
 import java.util.concurrent.PriorityBlockingQueue;
-
-/**
- * Created by niyaz on 06.10.2018.
- */
 
 @Component
 public class OrdersToApproveQueue {
     private static volatile OrdersToApproveQueue instance;
     private static volatile PriorityBlockingQueue<Order> orders;
     private static final Object lock = new Object();
-    private static volatile HashSet<String> contains;
+    private static volatile HashSet<Integer> contains;
     /* every time new order is added to the queue
     id of this order will be added to set
     so no order with same id will not added to the queue
@@ -33,6 +29,8 @@ public class OrdersToApproveQueue {
             return res;
         }
     }
+
+
 
     /**
      * tries to add new order in queue

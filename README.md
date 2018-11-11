@@ -3,6 +3,8 @@
 
 ## Quickstart
 
+Install Maven and JDK 8.
+
 + **Install Maven:**
 
 1. Search
@@ -40,9 +42,6 @@ mvn clean package -DskipTests
 + **Due to datacluster is not finished you need to run  our "fake" flask server.**
 
 ```
-FLASK_APP=main.py flask run
-```
-
 + **For running Webapp server run in root of project:**
 ```
 java -jar Employee_app-0.0.1-SNAPSHOT.jar

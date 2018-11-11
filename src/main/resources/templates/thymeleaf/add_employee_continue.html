@@ -28,20 +28,63 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Validate next order">
-                <a class="nav-link" th:href="@{/next_order}">
-                    <i class="fa fa-fw fa-globe"></i>
-                    <span class="nav-link-text">Validate next order</span>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" th:href="@{/main}">
+                    <i class="fas fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add new order">
-                <a class="nav-link" th:href="@{/add_order}">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
+                <a class="nav-link" th:href="@{/dispatched_orders}">
                     <i class="fa fa-fw fa-address-card"></i>
-                    <span class="nav-link-text">Add new order</span>
+                    <span class="nav-link-text">Orders</span>
                 </a>
             </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
+                <a class="nav-link" th:href="@{/map}">
+                    <i class="fa fa-fw fa-address-card"></i>
+                    <span class="nav-link-text">Map</span>
+                </a>
+
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
+                <a class="nav-link" th:href="@{/dispatched_orders}">
+                    <i class="fa fa-fw fa-address-card"></i>
+                    <span class="nav-link-text">Orders</span>
+                </a>
+            </li>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Statistics">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">Statistics</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li>
+                        <a th:href="@{/graph/chart}">Orders graph</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/graph/column_chart}">Profit graph</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents1" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">Employees</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents1">
+                    <li>
+                        <a th:href="@{/add_employee}">Add employee</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/employees}">Employees</a>
+                    </li>
+
+                </ul>
+            </li>
+
 
         </ul>
         <ul class="navbar-nav sidenav-toggler">
@@ -156,9 +199,9 @@
                     </div>
                 </form>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            <li class="nav-item" th:href="@{/logout}">
+                <a class="nav-link" th:href="@{/logout}">
+                    <i class="fa fa-fw fa-sign-out" th:href="@{/logout}"></i>Logout</a>
             </li>
         </ul>
     </div>
@@ -172,7 +215,7 @@
             </li>
             <li class="breadcrumb-item active"></li>
         </ol>
-        <h1>Oprder processing finished.You can take next. Continue your job and you will reach success!</h1>
+        <h1>Employee added!</h1>
         <hr>
 
 
@@ -203,7 +246,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
                     </div>
                 </div>
             </div>
